@@ -8,12 +8,10 @@
                         <span class="icon-bar"></span>
                     </a>
                 </li>
-
-
             </ul>
             <!-- END TOP-LEFT TOOLBAR-->
             <!--LOGO-->
-            <img src="{{asset('img/logo.jpeg')}}" width="150"/>
+          {{-- <img src="{{asset('img/logo.jpeg')}}" width="150"/> --}}
             <!-- START TOP-RIGHT TOOLBAR-->
             <ul class="nav navbar-toolbar">
 
