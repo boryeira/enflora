@@ -17,18 +17,18 @@
                 <div class="row">
                     <div class="col-sm-6 form-group mb-6">
                         <label>Fecha</label>
-                        <input class="form-control" type="date"  name="Codigo">
+                        <input class="form-control" type="date"  name="date">
                     </div>
                     <div class="col-sm-6 form-group mb-6">
                         <label>Codigo</label>
-                        <input class="form-control" type="text" placeholder="00" name="Codigo">
+                        <input class="form-control" type="text" placeholder="00" name="code">
                     </div>
                     <div class="col-sm-6 form-group mb-6">
                       <label>Variedad</label>
-                      <select class="form-control">
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
+                      <select class="form-control" name="strain">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
                         </select>
                     </div>
                     <div class="col-sm-6 form-group mb-6">
@@ -42,10 +42,10 @@
                     <label>Estado</label>
                     <div>
                         <label class="radio radio-inline radio-info">
-                            <input type="radio" name="status" checked="">
+                            <input type="radio" name="consumed" checked="" value="0">
                             <span class="input-span"></span>Activo</label>
                         <label class="radio radio-inline radio-info">
-                            <input type="radio" name="status">
+                            <input type="radio" name="consumed" value="1">
                             <span class="input-span"></span>Consumido</label>
                     </div>
                 </div>

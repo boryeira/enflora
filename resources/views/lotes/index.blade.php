@@ -9,7 +9,7 @@
   <div class="page-content fade-in-up">
     <div class="row">
       <div class="col-xs-12">
-
+        hola
       </div>
 
     </div>

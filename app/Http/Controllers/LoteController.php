@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Lote;
+use App\Models\Lote;
 use Illuminate\Http\Request;
+use Redirect;
 
 class LoteController extends Controller
 {
@@ -35,7 +36,17 @@ class LoteController extends Controller
      */
     public function store(Request $request)
     {
-       dd($request->all());
+
+      $lote = new Lote();
+      $lote->strain_id = $request->strain;
+      $lote->code = $request->code;
+      $lote->quantity = $request->quantiy;
+      $lote->consumed = $request->consumed;
+      $lote->storage_at = $request->date;
+      $lote->save();
+
+      return Redirect::route('lote.index');
+
     }
 
     /**
