@@ -16,7 +16,7 @@ class CreateLotesTable extends Migration
          Schema::create('lotes', function (Blueprint $table) {
              $table->bigIncrements('id');
              $table->unsignedInteger('strain_id');
-             $table->unsignedInteger('code');
+             $table->string('code');
              $table->unsignedInteger('quantity');
              $table->unsignedInteger('consumed');
              $table->unsignedInteger('status');

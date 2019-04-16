@@ -12,12 +12,17 @@
 
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css"> --}}
 
     <!-- Styles -->
-    <link href="{{ asset('css/main.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/line-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/themify-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.min.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app" class="page-wrapper">

@@ -12,11 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('users.dashboard');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::resource('/lotes', 'LoteController');
+Route::resource('/users', 'UserController');

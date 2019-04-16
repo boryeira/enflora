@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('sidebar')
-  @include('layouts.sidebar',['page'=>'lotes'])
+  @include('layouts.sidebar',['page'=>'dashboard'])
 @endsection
 
 
@@ -11,31 +11,35 @@
       <div class="col-xl-12">
         <div class="ibox">
             <div class="ibox-head">
-                <div class="ibox-title">Lotes activos</div>
+                <div class="ibox-title">Usuarios</div>
             </div>
             <div class="ibox-body">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Codigo</th>
-                            <th>Variedad</th>
-                            <th>Disponible</th>
-                            <th>Fecha lote</th>
-                            <th>Acciones</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Rut</th>
+                            <th>Email</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                      @foreach ($lotes as $lote)
+                      @foreach ($users as $user)
 
                       @endforeach
                         <tr>
-                            <td>{{$lote->code}}</td>
+                            {{-- <td>{{$lote->code}}</td>
                             <td>{{$lote->strain_id}}</td>
                             <td>{{($lote->quantity)-($lote->consumed)}}/{{$lote->quantity}}</td>
-                            <td>{{$lote->storage_at}}</td>
+                            <td>{{$lote->storage_at}}</td> --}}
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td>
                               <a class="btn btn-primary btn-icon-only btn-sm btn-air"><i class="ti-eye"></i></a>
-                              <a class="btn btn-info btn-icon-only btn-sm btn-air"><i class="ti-plus"></i></a>
+                              <a class="btn btn-info btn-icon-only btn-sm btn-air"><i class="ti-pencil"></i></a>
                               <a class="btn btn-danger btn-icon-only btn-sm btn-air"><i class="ti-trash"></i></a>
                             </td>
                         </tr>

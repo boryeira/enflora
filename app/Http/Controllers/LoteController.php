@@ -15,7 +15,8 @@ class LoteController extends Controller
      */
     public function index()
     {
-        return view('lotes.index');
+        $lotes = Lote::all();
+        return view('lotes.index')->with('lotes',$lotes);
     }
 
     /**
@@ -41,11 +42,12 @@ class LoteController extends Controller
       $lote->strain_id = $request->strain;
       $lote->code = $request->code;
       $lote->quantity = $request->quantiy;
-      $lote->consumed = $request->consumed;
+      $lote->consumed = 0;
+      $lote->status = 1;
       $lote->storage_at = $request->date;
       $lote->save();
 
-      return Redirect::route('lote.index');
+      return Redirect::route('lotes.index');
 
     }
 

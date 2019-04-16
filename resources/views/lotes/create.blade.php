@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('sidebar')
-  @include('layouts.sidebar')
+  @include('layouts.sidebar',['page'=>'lotes'])
 @endsection
 
 
@@ -38,17 +38,17 @@
 
                 </div>
 
-                <div class="form-group mb-0">
+                {{-- <div class="form-group mb-0">
                     <label>Estado</label>
                     <div>
                         <label class="radio radio-inline radio-info">
-                            <input type="radio" name="consumed" checked="" value="0">
+                            <input type="radio" name="status" checked="" value="0">
                             <span class="input-span"></span>Activo</label>
                         <label class="radio radio-inline radio-info">
                             <input type="radio" name="consumed" value="1">
                             <span class="input-span"></span>Consumido</label>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div class="ibox-footer">
                 <button class="btn btn-info mr-2" type="submit">Agregar</button>
