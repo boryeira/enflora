@@ -11,25 +11,25 @@
         <div class="ibox-head">
             <div class="ibox-title">Ingreso Usuario</div>
         </div>
-        <form class="form-info" action="{{route('users.store')}}" method="POST">
+        <form class="form-info" action="{{route('users.subscription.store',['user'=>$user->id])}}" method="POST" enctype="multipart/form-data">
            <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
             <div class="ibox-body">
                 <div class="row">
                     <div class="col-sm-6 form-group mb-6">
-                        <label>Nombre</label>
-                        <input class="form-control" type="text"  name="first_name">
+                        <label>Inicio</label>
+                        <input class="form-control" type="date"  name="date">
                     </div>
                     <div class="col-sm-6 form-group mb-6">
-                        <label>Apellido</label>
-                        <input class="form-control" type="text" name="last_name">
+                      <label>Cantidad de gs</label>
+                      <input class="form-control" type="text" name="amount">
                     </div>
                     <div class="col-sm-6 form-group mb-6">
-                      <label>Rut</label>
-                      <input class="form-control" type="text" name="rut">
+                        <label>Valor mensual</label>
+                        <input class="form-control" type="email"  name="fee">
                     </div>
                     <div class="col-sm-6 form-group mb-6">
-                        <label>Email</label>
-                        <input class="form-control" type="email"  name="email">
+                      <label>Reseta medica</label>
+                      <input type="file" name="file" class="form-control">
                     </div>
 
                 </div>

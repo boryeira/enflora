@@ -19,3 +19,5 @@ Auth::routes();
 
 Route::resource('/lotes', 'LoteController');
 Route::resource('/users', 'UserController');
+Route::get('/users/{user}/subscription/create', 'UserController@subscriptionCreate')->name('users.subscription.create');
+Route::post('/users/{user}/subscription/store', 'UserController@subscriptionStore')->name('users.subscription.store');

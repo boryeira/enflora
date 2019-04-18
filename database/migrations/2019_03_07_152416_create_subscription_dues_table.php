@@ -16,8 +16,11 @@ class CreateSubscriptionDuesTable extends Migration
         Schema::create('subscription_dues', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('subscription_id');
-            $table->integer('amount');
-            $table->integer('quantity');
+            $table->unsignedInteger('amount');
+            $table->unsignedInteger('fee');
+            $table->date('pay_at')->nullable();
+            $table->date('start');
+            $table->date('end');
             $table->timestamps();
         });
     }

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Subscription;
+use Redirect;
 
 class UserController extends Controller
 {
@@ -18,4 +21,35 @@ class UserController extends Controller
       return view('users.create');
   }
 
+  public function store(Request $request)
+  {
+      $user = new User();
+      $user->first_name = $request->first_name;
+      $user->last_name = $request->last_name;
+      $user->rut = $request->rut;
+      $user->email = $request->email;
+      $user->password = Hash::make('enflora');
+      $user->save();
+      return redirect::route('users.show',['user'=>$user->id]);
+  }
+
+  public function show(User $user)
+  {
+      return view('users.show')->with('user',$user);
+  }
+  public function subscriptionCreate(User $user)
+  {
+      return view('users.subscriptions.create')->with('user',$user);
+  }
+  public function subscriptionStore(Request $request, User $user)
+  {
+      $subs = new Subscription();
+      $subs->user_id = $user->id;
+      $subs->monthly_quantity = $user->id;
+      $subs->user_id = $user->id;
+      $subs->user_id = $user->id;
+      $subs->user_id = $user->id;
+       
+      return view('users.show')->with('user',$user);
+  }
 }

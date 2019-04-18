@@ -26,23 +26,19 @@
                     </thead>
                     <tbody>
                       @foreach ($users as $user)
-
-                      @endforeach
                         <tr>
-                            {{-- <td>{{$lote->code}}</td>
-                            <td>{{$lote->strain_id}}</td>
-                            <td>{{($lote->quantity)-($lote->consumed)}}/{{$lote->quantity}}</td>
-                            <td>{{$lote->storage_at}}</td> --}}
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{$user->first_name}}</td>
+                            <td>{{$user->last_name}}</td>
+                            <td>{{$user->rut}}</td>
+                            <td>{{$user->email}}</td>
                             <td>
-                              <a class="btn btn-primary btn-icon-only btn-sm btn-air"><i class="ti-eye"></i></a>
+                              <a class="btn btn-primary btn-icon-only btn-sm btn-air" href="{{route('users.show',['user'=>$user->id])}}"><i class="ti-eye"></i></a>
                               <a class="btn btn-info btn-icon-only btn-sm btn-air"><i class="ti-pencil"></i></a>
                               <a class="btn btn-danger btn-icon-only btn-sm btn-air"><i class="ti-trash"></i></a>
                             </td>
                         </tr>
+                      @endforeach
+
 
                     </tbody>
                 </table>
