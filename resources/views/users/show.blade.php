@@ -16,7 +16,7 @@
         </div>
         <div class="ibox">
           <div class="ibox-body">
-            <a class="btn btn-info" href="{{route('users.subscription.create',['user'=>$user->id])}}">Nueva subscripcion</a>
+            <a class="btn btn-info" href="{{route('subscriptions.create',['user'=>$user->id])}}">Nueva subscripcion</a>
           </div>
         </div>
       </div>

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Users;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Subscription;
+use App\Http\Controllers\Controller;
 use Redirect;
 
 class UserController extends Controller
@@ -49,7 +50,7 @@ class UserController extends Controller
       $subs->user_id = $user->id;
       $subs->user_id = $user->id;
       $subs->user_id = $user->id;
-       
+
       return view('users.show')->with('user',$user);
   }
 }

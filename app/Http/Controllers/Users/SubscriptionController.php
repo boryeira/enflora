@@ -1,9 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Users;
 
-use App\Subscription;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Subscription;
+use App\Models\User;
+use Carbon\Carbon;
+
 
 class SubscriptionController extends Controller
 {
@@ -12,7 +16,7 @@ class SubscriptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
         //
     }
@@ -22,9 +26,9 @@ class SubscriptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $user)
     {
-        //
+      return view('users.subscriptions.create')->with('user',$user);
     }
 
     /**
@@ -33,9 +37,18 @@ class SubscriptionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,User $user)
     {
-        //
+      $subs = new Subscription();
+      $subs->user_id = $user->id;
+      $subs->monthly_quantity = $request->monthly_quantity;
+      $subs->monthly_fee = $request->monthly_fee;
+      $subs->monthly_dues = 6;
+      $subs->subscription_start = Carbon::parse($request->subscription_start);
+      $subs->subscription_end = Carbon::parse($request->subscription_start)->addMonths(6);
+      $subs->save();
+
+      return view('users.show')->with('user',$user);
     }
 
     /**

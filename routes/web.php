@@ -18,6 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::resource('/lotes', 'LoteController');
-Route::resource('/users', 'UserController');
-Route::get('/users/{user}/subscription/create', 'UserController@subscriptionCreate')->name('users.subscription.create');
-Route::post('/users/{user}/subscription/store', 'UserController@subscriptionStore')->name('users.subscription.store');
+Route::resource('/users', 'Users\UserController');
+Route::middleware(['auth'])->prefix('users')->group(function ()
+{
+  Route::resource('/{user}/subscriptions', 'Users\SubscriptionController');
+});
+// Route::get('/users/{user}/subscription/create', 'UserController@subscriptionCreate')->name('users.subscription.create');
+// Route::post('/users/{user}/subscription/store', 'UserController@subscriptionStore')->name('users.subscription.store');
