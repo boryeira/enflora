@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Subscription;
 use App\Models\User;
 use Carbon\Carbon;
+use Redirect;
 
 
 class SubscriptionController extends Controller
@@ -48,7 +49,7 @@ class SubscriptionController extends Controller
       $subs->subscription_end = Carbon::parse($request->subscription_start)->addMonths(6);
       $subs->save();
 
-      return view('users.show')->with('user',$user);
+      return Redirect::route('users.show',['user'=>$user->id]);
     }
 
     /**
