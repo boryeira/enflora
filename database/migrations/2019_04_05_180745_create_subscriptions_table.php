@@ -16,12 +16,13 @@ class CreateSubscriptionsTable extends Migration
          Schema::create('subscriptions', function (Blueprint $table) {
              $table->bigIncrements('id');
              $table->unsignedInteger('user_id');
-             $table->unsignedInteger('monthly_amount');
+             $table->unsignedInteger('monthly_quantity');
              $table->unsignedInteger('monthly_fee');
              $table->integer('monthly_dues');
              $table->date('subscription_start');
              $table->date('subscription_end');
              $table->longText('prescription')->nullable();
+             $table->unsignedInteger('status');
              $table->timestamps();
          });
      }

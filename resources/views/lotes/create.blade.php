@@ -26,9 +26,11 @@
                     <div class="col-sm-6 form-group mb-6">
                       <label>Variedad</label>
                       <select class="form-control" name="strain">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
+                        @foreach (App\Models\Strain::all() as $strain)
+                          <option value="{{$strain->id}}">{{$strain->name}}</option>
+                        @endforeach
+
+
                         </select>
                     </div>
                     <div class="col-sm-6 form-group mb-6">

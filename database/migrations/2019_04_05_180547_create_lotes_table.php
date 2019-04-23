@@ -20,7 +20,7 @@ class CreateLotesTable extends Migration
              $table->unsignedInteger('quantity');
              $table->unsignedInteger('consumed');
              $table->unsignedInteger('status');
-             $table->longText('details');
+             $table->longText('details')->nullable();
              $table->date('storage_at');
              $table->timestamps();
          });

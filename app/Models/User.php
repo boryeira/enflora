@@ -27,6 +27,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    protected $append = [
+        'full_name',
+    ];
 
     /**
      * The attributes that should be cast to native types.
@@ -44,5 +47,9 @@ class User extends Authenticatable
     public function activeSubscription()
     {
         return $this->hasOne('App\Models\Subscription')->where('status',1);
+    }
+    public function getFullNameAttribute()
+    {
+        return $this->first_name.' '.$this->last_name;
     }
 }

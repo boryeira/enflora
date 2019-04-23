@@ -32,8 +32,9 @@
                             <td>{{$user->rut}}</td>
                             <td>{{$user->email}}</td>
                             <td>
+                              <a class="btn btn-info btn-icon-only btn-sm btn-air" href="{{route('orders.create',['user'=>$user->id])}}"><i class="ti-plus"></i></a>
                               <a class="btn btn-primary btn-icon-only btn-sm btn-air" href="{{route('users.show',['user'=>$user->id])}}"><i class="ti-eye"></i></a>
-                              <a class="btn btn-info btn-icon-only btn-sm btn-air"><i class="ti-pencil"></i></a>
+                              <a class="btn btn-warning btn-icon-only btn-sm btn-air"><i class="ti-pencil"></i></a>
                               <a class="btn btn-danger btn-icon-only btn-sm btn-air"><i class="ti-trash"></i></a>
                             </td>
                         </tr>

@@ -4,13 +4,10 @@ namespace App\Http\Controllers\Users;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Subscription;
+use App\Models\Order;
 use App\Models\User;
-use Carbon\Carbon;
-use Redirect;
 
-
-class SubscriptionController extends Controller
+class OrderController extends Controller
 {
     public function all()
     {
@@ -21,9 +18,9 @@ class SubscriptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user)
+    public function index()
     {
-        //
+
     }
 
     /**
@@ -33,7 +30,7 @@ class SubscriptionController extends Controller
      */
     public function create(User $user)
     {
-      return view('users.subscriptions.create')->with('user',$user);
+        return view('users.orders.create')->with('user',$user);
     }
 
     /**
@@ -42,28 +39,18 @@ class SubscriptionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,User $user)
+    public function store(Request $request)
     {
-      $subs = new Subscription();
-      $subs->user_id = $user->id;
-      $subs->monthly_quantity = $request->monthly_quantity;
-      $subs->monthly_fee = $request->monthly_fee;
-      $subs->monthly_dues = 6;
-      $subs->status = 1;
-      $subs->subscription_start = Carbon::parse($request->subscription_start);
-      $subs->subscription_end = Carbon::parse($request->subscription_start)->addMonths(6);
-      $subs->save();
-
-      return Redirect::route('users.show',['user'=>$user->id]);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Subscription  $subscription
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Subscription $subscription)
+    public function show(Order $order)
     {
         //
     }
@@ -71,10 +58,10 @@ class SubscriptionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Subscription  $subscription
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subscription $subscription)
+    public function edit(Order $order)
     {
         //
     }
@@ -83,10 +70,10 @@ class SubscriptionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Subscription  $subscription
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Subscription $subscription)
+    public function update(Request $request, Order $order)
     {
         //
     }
@@ -94,10 +81,10 @@ class SubscriptionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Subscription  $subscription
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subscription $subscription)
+    public function destroy(Order $order)
     {
         //
     }

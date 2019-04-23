@@ -17,11 +17,12 @@ class CreateSubscriptionDuesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('subscription_id');
             $table->unsignedInteger('quantity');
+            $table->unsignedInteger('consumed');
             $table->unsignedInteger('fee');
             $table->unsignedInteger('due');
-            $table->date('pay_at')->nullable();
             $table->date('start');
             $table->date('end');
+            $table->unsignedInteger('payment_id')->nullable();
             $table->timestamps();
         });
     }
