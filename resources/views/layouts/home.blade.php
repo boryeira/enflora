@@ -10,7 +10,7 @@
 
           <div class="ibox" style="margin:5px">
               <div class="ibox-body">
-                  <ul class="timeline">
+                  <ul class="timeline text-left">
                       <li class="timeline-item"><i class="ti-desktop timeline-icon"></i> Sistema de suscripción y reserva en linea</li>
                       <li class="timeline-item"><i class="ti-gallery timeline-icon"></i> Trazabilidad completa del cultivo</li>
                       <li class="timeline-item"><i class="ti-world timeline-icon"></i>Cultivo orgánico bajo estándares internacionales</li>
