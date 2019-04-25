@@ -27,11 +27,19 @@
 </head>
 <body>
     <div id="app" class="page-wrapper">
+      @auth
         @include('layouts.header')
         @yield('sidebar')
         <div class="content-wrapper">
             @yield('content')
         </div>
+      @endauth
+      @guest
+        <div class="">
+            @yield('content')
+        </div>
+      @endguest
+
     </div>
 </body>
 

@@ -12,6 +12,7 @@
         <div class="ibox">
             <div class="ibox-head">
                 <div class="ibox-title">Lotes activos</div>
+                <div class="ibox-tool"><a class="btn btn-primary" href="{{route('lotes.create')}}">Nuevo Lote</a></div>
             </div>
             <div class="ibox-body">
                 <table class="table">

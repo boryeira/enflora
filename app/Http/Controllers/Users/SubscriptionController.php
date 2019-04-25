@@ -48,7 +48,7 @@ class SubscriptionController extends Controller
       $subs->user_id = $user->id;
       $subs->monthly_quantity = $request->monthly_quantity;
       $subs->monthly_fee = $request->monthly_fee;
-      $subs->monthly_dues = 6;
+      $subs->monthly_dues = $request->months;;
       $subs->status = 1;
       $subs->subscription_start = Carbon::parse($request->subscription_start);
       $subs->subscription_end = Carbon::parse($request->subscription_start)->addMonths(6);

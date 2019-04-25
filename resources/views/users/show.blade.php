@@ -19,7 +19,7 @@
       <div class="col-xl-4">
         <div class="ibox">
           <div class="ibox-head">
-              <div class="ibox-title">Subscripcion Activa</div>
+              <div class="ibox-title">Subscripcion {{$user->activeSubscription->subscription_start->format('d-m-Y')}} al {{$user->activeSubscription->subscription_end->format('d-m-Y')}}</div>
               <div class="ibox-tools">
                   <a class="btn btn-primary btn-sm" href="{{route('subscriptions.create',['user'=>$user->id])}}">Nueva</a>
               </div>
@@ -30,12 +30,12 @@
 
                 <ul class="list-group list-group-divider list-group-full">
                     <li class="list-group-item flexbox">
-                        <span class="flexbox"><i class="la la-calendar mr-3 font-40"></i>Periodo</span>
-                        {{$user->activeSubscription->subscription_start->format('d/m/Y')}} al {{$user->activeSubscription->subscription_end->format('d/m/Y')}}
+                        <span class="flexbox"><i class="la la-calendar mr-3 font-40"></i>Fecha de pago</span>
+                        Día {{$user->activeSubscription->subscription_start->format('d')}} de cada mes
                     </li>
                     <li class="list-group-item flexbox">
-                        <span class="flexbox"><i class="la la-money mr-3 font-40"></i>Fecha de pago</span>
-                        Día {{$user->activeSubscription->subscription_start->format('d')}} de cada mes
+                        <span class="flexbox"><i class="la la-money mr-3 font-40"></i>Mensualidad</span>
+                        {{$user->activeSubscription->monthly_fee}}
                     </li>
                     <li class="list-group-item flexbox">
                         <span class="flexbox"><i class="la la-balance-scale mr-3 font-40"></i>Gramos al mes</span>

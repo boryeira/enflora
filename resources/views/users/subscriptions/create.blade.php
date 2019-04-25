@@ -28,6 +28,10 @@
                         <input class="form-control" type="number"  name="monthly_fee" required>
                     </div>
                     <div class="col-sm-6 form-group mb-6">
+                      <label>Meses de subscripcion</label>
+                      <input class="form-control" type="number"  value="6" name="months">
+                    </div>
+                    <div class="col-sm-6 form-group mb-6">
                       <label>Reseta medica</label>
                       <input type="file" name="file" class="form-control" >
                     </div>
