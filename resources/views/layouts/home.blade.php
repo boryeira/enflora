@@ -11,8 +11,9 @@
             <a class="btn btn-primary" href="{{route('login')}}">Ingresar</a>
             <br>
             <a class="btn btn-info" href="{{route('form')}}">Formulario Pre-registro</a>
-          </div>
 
+          </div>
+          <div class="font-13" style="margin-bottom:50px;margin-top:50px;">2018 © Germinado por <b>Envolabs</b> - Cosechando datos</div>
         </div>
     </div>
 </div>
