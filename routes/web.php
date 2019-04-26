@@ -17,13 +17,14 @@ Auth::routes();
 
 Route::resource('/lotes', 'LoteController');
 Route::resource('/users', 'Users\UserController');
+Route::resource('/orders', 'OrderController');
 Route::get('/subscriptions', 'Users\SubscriptionController@all')->name('subscriptions.all');
-Route::get('/orders', 'Users\SubscriptionController@all')->name('orders.all');
+//Route::get('/orders', 'Users\SubscriptionController@all')->name('orders.all');
 Route::get('/payments', 'Users\PaymentController@all')->name('payments.all');
 Route::middleware(['auth'])->prefix('users')->group(function ()
 {
   Route::resource('/{user}/subscriptions', 'Users\SubscriptionController');
-  Route::resource('/{user}/orders', 'Users\OrderController');
+  //Route::resource('/{user}/orders', 'Users\OrderController');
   Route::resource('/{user}/payments', 'Users\PaymentController');
 });
 

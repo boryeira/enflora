@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Lote;
 use Illuminate\Http\Request;
 use Redirect;
+use storage;
 
 class LoteController extends Controller
 {
@@ -42,6 +43,7 @@ class LoteController extends Controller
     public function store(Request $request)
     {
 
+
       $lote = new Lote();
       $lote->strain_id = $request->strain;
       $lote->code = $request->code;
@@ -50,6 +52,13 @@ class LoteController extends Controller
       $lote->status = 1;
       $lote->storage_at = $request->date;
       $lote->save();
+
+      if ($request->img) {
+          request()->file('img')->storeAs('public/lotes', $lote->id.'.jpg');
+      }
+      $lote->img = url('/').'/storage/lotes/'.$lote->id.'.jpg';
+      $lote->save();
+
 
       return Redirect::route('lotes.index');
 

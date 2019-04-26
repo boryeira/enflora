@@ -1,18 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Users;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
-use App\Models\User;
+use Auth;
+
 
 class OrderController extends Controller
 {
-    public function all()
+    
+    public function __construct()
     {
-
+        $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +23,14 @@ class OrderController extends Controller
      */
     public function index()
     {
+      $orders =  Order::all();
+      //return view()
+    }
 
+    public function myOrders()
+    {
+      $orders =  Order::where('user_id',Auth::user()->id);
+      //return view()
     }
 
     /**
@@ -28,9 +38,9 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(User $user)
+    public function create()
     {
-        return view('users.orders.create')->with('user',$user);
+
     }
 
     /**

@@ -11,12 +11,12 @@
         <div class="ibox-head">
             <div class="ibox-title">Ingreso de lote</div>
         </div>
-        <form class="form-info" action="{{route('lotes.store')}}" method="POST">
+        <form class="form-info" action="{{route('lotes.store')}}" method="POST" enctype="multipart/form-data">
            <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
             <div class="ibox-body">
                 <div class="row">
                     <div class="col-sm-6 form-group mb-6">
-                        <label>Fecha</label>
+                        <label>Fecha enfrascado</label>
                         <input class="form-control" type="date"  name="date">
                     </div>
                     <div class="col-sm-6 form-group mb-6">
@@ -36,6 +36,14 @@
                     <div class="col-sm-6 form-group mb-6">
                       <label>Cantidad en gramos</label>
                       <input class="form-control" type="text" placeholder="en gramos" name="quantiy">
+                    </div>
+                    <div class="col-sm-12 form-group mb-12">
+                      <label>Descripcion</label>
+                      <textarea class="form-control" name="details"></textarea>
+                    </div>
+                    <div class="col-sm-6 form-group mb-6">
+                      <label>Imagen:</label>
+                      <input type="file" name="img" required  >
                     </div>
 
                 </div>

@@ -11,6 +11,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+      \DB::table('users')->insert(array (
+          0 =>
+          array (
+              'id' => 1,
+              'first_name' => 'enflora',
+              'last_name' => 'admin',
+              'email' => 'admin@enfloraclub.cl',
+              'password' => bcrypt('123123'),
+              'role_id' => 1,
+              'created_at' => now(),
+              'updated_at' => now(),
+          ),
+        ));
         factory(App\Models\User::class, 10)->create();
 
         \DB::table('strains')->insert(array (
@@ -22,6 +35,6 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now(),
             ),
           ));
-          
+
     }
 }
