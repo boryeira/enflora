@@ -29,7 +29,11 @@
     <div id="app" class="page-wrapper">
       @auth
         @include('layouts.header')
-        @yield('sidebar')
+        @if(Auth::user()->role_id == 1)
+          @include('layouts.sidebars.admin')
+        @else
+          @include('layouts.sidebars.user')
+        @endif
         <div class="content-wrapper">
             @yield('content')
         </div>

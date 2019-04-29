@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Lote;
 use Auth;
 
 class HomeController extends Controller
@@ -25,7 +26,9 @@ class HomeController extends Controller
       {
         return view('layouts.home');
       }  else {
-        return view('users.dashboard');
+        $lotes = Lote::where('status',1)->get();
+        return view('users.dashboard')->with('lotes',$lotes);
+        
       }
     }
     public function form()

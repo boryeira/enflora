@@ -1,9 +1,9 @@
 <nav class="page-sidebar">
     <div class="slimScrollDiv" >
       <ul class="side-menu metismenu scroller" >
-        <li @if($page == 'dashboard') class="active" @endif>
+        <li class="{{Helper::navigation_selected('home')}}">
             <a href="/"><i class="sidebar-item-icon ti-home"></i>
-                <span class="nav-label">Dashboards</span></a>
+                <span class="nav-label">Dashboard</span></a>
         </li>
         <li @if($page == 'lotes') class="active" @endif>
               <a href="javascript:;" aria-expanded="false"><i class="sidebar-item-icon ti-layout-grid3"></i>
