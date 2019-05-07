@@ -8,8 +8,9 @@
 @section('content')
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-6 col-lx-4 ">
+
       @foreach ($lotes as $lote)
+      <div class="col-sm-12 col-md-6 col-lx-4 ">
       <div class="card card-air text-center centered mb-4" style="max-width:320px;">
             <div class="card-body">
                 <div class="card-avatar mt-3 mb-4">
@@ -42,8 +43,9 @@
                 </div>
             </div>
         </div>
+        </div>
       @endforeach
-    </div>
+
   </div>
 </div>
 @endsection
