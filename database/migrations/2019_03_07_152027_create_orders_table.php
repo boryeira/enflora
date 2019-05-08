@@ -18,10 +18,11 @@ class CreateOrdersTable extends Migration
             $table->unsignedInteger('subscription_id')->nullable();
             $table->unsignedInteger('user_id')->nullable();
             $table->unsignedInteger('payment_id')->nullable();
-            $table->unsignedInteger('lote_id');
+          //  $table->unsignedInteger('lote_id');
             $table->unsignedInteger('amount');
-            $table->integer('order_status_id');
-            $table->integer('delivered');
+            $table->unsignedInteger('quantity');
+            $table->unsignedInteger('status')->default(1);
+          //  $table->integer('delivered');
             $table->timestamps();
         });
     }

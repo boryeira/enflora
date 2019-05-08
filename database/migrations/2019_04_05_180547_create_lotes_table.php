@@ -19,12 +19,12 @@ class CreateLotesTable extends Migration
              $table->string('code');
              $table->unsignedInteger('quantity');
              $table->unsignedInteger('consumed');
-             $table->unsignedInteger('status');
+             $table->unsignedInteger('status')->default(1);
              $table->longText('details')->nullable();
              $table->longText('img')->nullable();
              $table->longText('weedtracking')->nullable();
              $table->date('storage_at');
-            // $table->date('harvested_at');
+             $table->date('harvested_at');
              $table->timestamps();
          });
      }

@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
               'first_name' => 'enflora',
               'last_name' => 'admin',
               'email' => 'admin@enfloraclub.cl',
-              'password' => bcrypt('123123'),
+              'password' => bcrypt('flora123123'),
               'role_id' => 1,
               'created_at' => now(),
               'updated_at' => now(),
@@ -31,6 +31,13 @@ class DatabaseSeeder extends Seeder
             array (
                 'id' => 1,
                 'name' => 'Gorilla Glue #4',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ),
+            1 =>
+            array (
+                'id' => 2,
+                'name' => '2046',
                 'created_at' => now(),
                 'updated_at' => now(),
             ),

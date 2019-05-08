@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-
+  public function getStatusAttribute($value)
+  {
+    $rawStatus = ['1' => 'pendiente','2'=>'confirmado','3'=>'pagado','4'=>'entregado'];
+    return $rawStatus[$value];
+  }
 }
