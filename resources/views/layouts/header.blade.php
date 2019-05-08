@@ -11,7 +11,7 @@
             </ul>
             <!-- END TOP-LEFT TOOLBAR-->
             <!--LOGO-->
-          <img src="{{asset('img/enflora.png')}}" width="150"/>
+          {{-- <img src="{{asset('img/enflora.png')}}" width="150"/> --}}
             <!-- START TOP-RIGHT TOOLBAR-->
             <ul class="nav navbar-toolbar">
                 <li>

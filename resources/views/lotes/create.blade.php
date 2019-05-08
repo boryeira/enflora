@@ -13,8 +13,12 @@
             <div class="ibox-body">
                 <div class="row">
                     <div class="col-sm-6 form-group mb-6">
+                        <label>Fecha cosecha</label>
+                        <input class="form-control" type="date"  name="harvest">
+                    </div>
+                    <div class="col-sm-6 form-group mb-6">
                         <label>Fecha enfrascado</label>
-                        <input class="form-control" type="date"  name="date">
+                        <input class="form-control" type="date"  name="storage">
                     </div>
                     <div class="col-sm-6 form-group mb-6">
                         <label>Codigo</label>
@@ -64,4 +68,12 @@
         </form>
     </div>
 </div>
+@endsection
+
+@section('css')
+
+@endsection
+
+@section('js')
+
 @endsection

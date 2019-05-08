@@ -50,7 +50,8 @@ class LoteController extends Controller
       $lote->quantity = $request->quantiy;
       $lote->consumed = 0;
       $lote->status = 1;
-      $lote->storage_at = $request->date;
+      $lote->storage_at = $request->storage;
+      $lote->harvested_at = $request->harvest;
       $lote->save();
 
       if ($request->img) {

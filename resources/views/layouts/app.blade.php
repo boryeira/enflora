@@ -23,6 +23,7 @@
     <link href="{{ asset('css/line-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/themify-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.min.css') }}" rel="stylesheet">
+    @yield('css')
 
 </head>
 <body>
@@ -53,6 +54,8 @@
 <script src="{{ asset('js/jquery.slimscroll.min.js') }}" defer></script>
 <script src="{{ asset('js/jquery.validate.min.js') }}" defer></script>
 <script src="{{ asset('js/metisMenu.min.js') }}" defer></script>
+
+@yield('js')
 
 
 </html>

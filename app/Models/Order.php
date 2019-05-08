@@ -11,4 +11,10 @@ class Order extends Model
     $rawStatus = ['1' => 'pendiente','2'=>'confirmado','3'=>'pagado','4'=>'entregado'];
     return $rawStatus[$value];
   }
+
+  public function comments()
+  {
+      return $this->morphMany('App\Models\Comment', 'commentable');
+  }
+
 }

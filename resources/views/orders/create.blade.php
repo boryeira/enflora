@@ -7,6 +7,15 @@
       <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
     <div class="row">
       <div class="col-lg-12">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="ibox ibox-fullheight">
             <div class="ibox-body">
 
@@ -14,11 +23,11 @@
                   @foreach (App\Models\Strain::all() as $strain)
                     @if($strain->lotesActive)
                     <li class="media">
-                        <a class="media-img pr-4" href="javascript:;">
+                        <a class="media-img " >
                             <img src="{{$strain->lotesActive->img}}" alt="image" width="120">
                         </a>
-                        <div class="media-body d-flex">
-                            <div class="flex-1">
+                        <div class="media-body d-flex row">
+                            <div class="flex-1 col-md-6 ">
                                 <h5 class="media-heading">
                                     <a href="article.html">{{$strain->name}}</a>
                                 </h5>
@@ -30,15 +39,11 @@
 
                                 </div>
                             </div>
-                            <div class="text-right" style="width:200px;">
+                            <div class="text-right col-md-6" >
 
                                 <div class="form-group">
-                                  <input name="{{$strain->lotesActive->code}}" class="form-control mb-2 mr-sm-2" type="number" value="0"></input>
-                                  <span class="mb-1 font-strong text-primary">gs</span>
-                                </div>
-                                <div class="form-group">
-                                    
-                                    <div class="input-group bootstrap-touchspin"><span class="input-group-btn"><button class="btn btn-secondary bootstrap-touchspin-down" type="button">-</button></span><span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span><input class="touchspin1 form-control" value="" type="text" style="display: block;"><span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span><span class="input-group-btn"><button class="btn btn-secondary bootstrap-touchspin-up" type="button">+</button></span></div>
+                                  <input name="{{$strain->lotesActive->code}}" style="heigth:100%" value="0">
+                                  <span class="mb-1 font-strong text-primary">cuantos gs</span>
                                 </div>
 
                             </div>
@@ -58,4 +63,37 @@
     </div>
     </form>
   </div>
+@endsection
+
+@section('css')
+  <link href="{{ asset('css/jquery.bootstrap-touchspin.css') }}" rel="stylesheet">
+  <style>
+    .bootstrap-touchspin input {
+      height: 100% !important;
+    }
+  </style>
+@endsection
+
+@section('js')
+  <script src="{{ asset('js/jquery.bootstrap-touchspin.js') }}" defer></script>
+
+  <script defer>
+  window.onload = function() {
+
+    $( document ).ready(function() {
+      @foreach (App\Models\Strain::all() as $strain)
+        @if($strain->lotesActive)
+        $("input[name='{!!$strain->lotesActive->code!!}']").TouchSpin({
+            buttondown_class: 'btn btn-secondary ',
+            buttonup_class: 'btn btn-secondary ',
+            min: 0,
+            max: 30,
+        });
+        @endif
+      @endforeach
+
+    });
+  };
+
+  </script>
 @endsection
