@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Auth;
+use Redirect;
 
 
 class OrderController extends Controller
@@ -52,7 +53,19 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+
+      $items = $request->all();
+      unset($items['_token']);
+      if((array_sum($items)>30)||(array_sum($items)<10) ) {
+        return Redirect::back();
+      }
+
+      dd(array_sum($items));
+
+      foreach ($items as $key => $item) {
+        // code...
+      }
+
     }
 
     /**

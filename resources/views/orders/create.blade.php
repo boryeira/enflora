@@ -30,11 +30,15 @@
 
                                 </div>
                             </div>
-                            <div class="text-right" style="width:100px;">
+                            <div class="text-right" style="width:200px;">
 
                                 <div class="form-group">
                                   <input name="{{$strain->lotesActive->code}}" class="form-control mb-2 mr-sm-2" type="number" value="0"></input>
                                   <span class="mb-1 font-strong text-primary">gs</span>
+                                </div>
+                                <div class="form-group">
+                                    
+                                    <div class="input-group bootstrap-touchspin"><span class="input-group-btn"><button class="btn btn-secondary bootstrap-touchspin-down" type="button">-</button></span><span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span><input class="touchspin1 form-control" value="" type="text" style="display: block;"><span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span><span class="input-group-btn"><button class="btn btn-secondary bootstrap-touchspin-up" type="button">+</button></span></div>
                                 </div>
 
                             </div>
