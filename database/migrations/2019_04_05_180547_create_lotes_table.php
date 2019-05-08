@@ -18,6 +18,7 @@ class CreateLotesTable extends Migration
              $table->unsignedInteger('strain_id');
              $table->string('code');
              $table->unsignedInteger('quantity');
+             $table->unsignedInteger('price');
              $table->unsignedInteger('consumed');
              $table->unsignedInteger('status')->default(1);
              $table->longText('details')->nullable();

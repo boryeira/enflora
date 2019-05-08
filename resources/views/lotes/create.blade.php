@@ -36,7 +36,11 @@
                     </div>
                     <div class="col-sm-6 form-group mb-6">
                       <label>Cantidad en gramos</label>
-                      <input class="form-control" type="text" placeholder="en gramos" name="quantiy">
+                      <input class="form-control" type="number" placeholder="en gramos" name="quantiy">
+                    </div>
+                    <div class="col-sm-6 form-group mb-6">
+                      <label>Valor por gramos</label>
+                      <input class="form-control" type="number" placeholder="en gramos" name="price">
                     </div>
                     <div class="col-sm-12 form-group mb-12">
                       <label>Descripcion</label>

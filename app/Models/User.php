@@ -48,6 +48,16 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\Subscription')->where('status',1);
     }
+    public function activeOrder()
+    {
+        return $this->hasOne('App\Models\Order')->where('status','!=',4);
+    }
+    public function oldOrders()
+    {
+        return $this->hasMany('App\Models\Order')->where('status',4);
+    }
+
+    //getters
     public function getFullNameAttribute()
     {
         return $this->first_name.' '.$this->last_name;

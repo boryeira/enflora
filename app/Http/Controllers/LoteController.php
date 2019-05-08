@@ -48,6 +48,7 @@ class LoteController extends Controller
       $lote->strain_id = $request->strain;
       $lote->code = $request->code;
       $lote->quantity = $request->quantiy;
+      $lote->price = $request->price;
       $lote->consumed = 0;
       $lote->status = 1;
       $lote->storage_at = $request->storage;

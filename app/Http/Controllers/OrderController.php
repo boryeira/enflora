@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Lote;
 use App\Models\Order;
+use App\Models\OrderItem;
 use Auth;
 use Redirect;
 
@@ -24,15 +26,22 @@ class OrderController extends Controller
      */
     public function index()
     {
-      $orders =  Order::all();
-      //return view()
+      if(Auth::user()->role == 1) {
+        $orders =  Order::all();
+        return view('orders.index')->with('orders',$orders);
+      } else {
+        $oldOrders =  Auth::user()->oldOrders;
+        $activeOrder = Auth::user()->activeOrder;
+        return view('orders.my')->with('oldOrders',$oldOrders)->with('activeOrder',$activeOrder);
+      }
+
     }
 
-    public function myOrders()
-    {
-      $orders =  Order::where('user_id',Auth::user()->id);
-      //return view()
-    }
+    // public function myOrders()
+    // {
+    //   $orders =  Order::where('user_id',Auth::user()->id);
+    //   //return view()
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -59,12 +68,38 @@ class OrderController extends Controller
       if((array_sum($items)>30)||(array_sum($items)<10) ) {
         return Redirect::back()->withErrors(array('quantity' => 'La orden debe ser mayor o igual a 10g y menor a 30g.'));
       }
+      if(Auth::user()->role==1)
+      {
+        $user = Auth::user();
+      } else {
+        $user = Auth::user();
+      }
 
-      dd(array_sum($items));
+      $order = new Order;
+      $order->user_id = $user->id;
+      $order->quantity = array_sum($items);
+      $order->save();
 
       foreach ($items as $key => $item) {
-        // code...
+        $lote = Lote::where('code',$key)->get();
+        $item = new OrderItem;
+        $item->order_id = $order->id;
+        $item->lote_id = $key;
+        $item->quantity = $item;
+        $item->amount = $lote->price*$item;
+        $item->status = 1;
+        $item->save();
       }
+
+      $order->amount = $order->items->sum('amount');
+      if($order->save()) {
+
+      } else {
+        return Redirect::back()->withErrors(array('db' => 'error en base de datos'));
+      }
+
+
+
 
     }
 

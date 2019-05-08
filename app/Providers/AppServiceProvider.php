@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Observers\OrderObserver;
 use App\Observers\SubscriptionObserver;
 use App\Models\Subscription;
+use App\Models\Order;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,5 +28,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Subscription::observe(SubscriptionObserver::class);
+        Order::observe(OrderObserver::class);
     }
 }

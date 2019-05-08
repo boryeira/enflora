@@ -14,7 +14,12 @@
           {{-- <img src="{{asset('img/enflora.png')}}" width="150"/> --}}
             <!-- START TOP-RIGHT TOOLBAR-->
             <ul class="nav navbar-toolbar">
-                <li>
+                <li class="nav-link">
+                  <span>{{Auth::user()->full_name}} </span>
+
+                </li>
+
+                <li class="nav-link">
                   <form class="form-info" action="{{route('logout')}}" method="POST" >
                     <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                     <button class="d-flex align-items-center btn btn-danger btn-sm">Logout<i class="ti-shift-right ml-2 font-20"></i></button>
