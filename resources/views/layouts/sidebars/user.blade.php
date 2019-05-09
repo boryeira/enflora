@@ -10,7 +10,7 @@
                   <span class="nav-label">Ordenes</span><i class="fa fa-angle-left arrow"></i></a>
               <ul class="nav-2-level collapse" aria-expanded="false" style="height: 0px;">
                   <li>
-                      <a href="{{route('orders.my')}}">Todas</a>
+                      <a href="{{route('orders.index')}}">Todas</a>
                   </li>
                   <li>
                       <a href="{{route('orders.create')}}">Nueva</a>
