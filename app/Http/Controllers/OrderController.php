@@ -49,8 +49,12 @@ class OrderController extends Controller
      */
     public function create()
     {
+      if((Auth::user()->activeOrder)&&(Auth::user()->role_id != 1)){
+        return Redirect::back()->withErrors(array('activeOrder' => 'Ya tienes una orden activa.'));
+      } else {
+        return view('orders.create');
+      }
 
-      return view('orders.create');
     }
 
     /**

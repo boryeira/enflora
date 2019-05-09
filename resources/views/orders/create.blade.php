@@ -34,7 +34,7 @@
                                 <p class="font-13 text-light">Cillum in incididunt reprehenderit qui reprehenderit nulla ut sint</p>
                                 <div class="font-13">
                                     <span class="mr-4">Cosechada:
-                                        <a class="text-success" href="javascript:;">{{$strain->lotesActive->storage_at}}</a>
+                                        <a class="text-success" href="javascript:;">{{$strain->lotesActive->harvested_at}}</a>
                                     </span>
 
                                 </div>

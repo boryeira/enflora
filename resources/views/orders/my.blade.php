@@ -6,8 +6,42 @@
     <div class="row">
       <div class="col-xl-12">
         <div class="ibox ">
+          <div class="ibox-head">
+              <div class="ibox-title">Orden activa</div>
+          </div>
           <div class="ibox-body">
-            activo
+            @if(Auth::user()->activeOrder)
+              <ul class="media-list media-list-divider">
+                @foreach (Auth::user()->activeOrder->items as  $item)
+                  <li class="media">
+                      <div class="media-body d-flex row">
+                          <div class="flex-1 col-md-6 ">
+                              <h5 class="media-heading">
+                                  <a href="article.html">{{$item->lote->strain->name}}</a>
+                              </h5>
+                              <p class="font-13 text-light">Cillum in incididunt reprehenderit qui reprehenderit nulla ut sint</p>
+                              <div class="font-13">
+                                  <span class="mr-4">Cosechada:
+                                      <div class="text-success" >{{$item->lote->strain->lotesActive->harvested_at}}</div>
+                                  </span>
+
+                              </div>
+                          </div>
+                          <div class="text-right col-md-6" >
+
+                              <div class="form-group">
+                                <input name="{{$item->lote->strain->lotesActive->code}}" style="heigth:100%" value="0">
+                                <span class="mb-1 font-strong text-primary">cuantos gs</span>
+                              </div>
+
+                          </div>
+                      </div>
+                  </li>
+                @endforeach
+              </ul>
+            @else
+              <p>Sin orden activa</p>
+            @endif
           </div>
         </div>
       </div>
@@ -15,22 +49,6 @@
         <div class="ibox">
             <div class="ibox-body">
                 <h5 class="font-strong mb-4">Ordenes antiguas</h5>
-                {{-- <div class="flexbox mb-4">
-                    <div class="flexbox">
-                        <label class="mb-0 mr-2">Type:</label>
-                        <select class="selectpicker show-tick form-control" id="type-filter" title="Please select" data-style="btn-solid" data-width="150px">
-                            <option value="">All</option>
-                            <option>Shipped</option>
-                            <option>Completed</option>
-                            <option>Pending</option>
-                            <option>Canceled</option>
-                        </select>
-                    </div>
-                    <div class="input-group-icon input-group-icon-left mr-3">
-                        <span class="input-icon input-icon-right font-16"><i class="ti-search"></i></span>
-                        <input class="form-control form-control-rounded form-control-solid" id="key-search" type="text" placeholder="Search ...">
-                    </div>
-                </div> --}}
                 <div class="table-responsive row">
                     <table class="table table-bordered table-hover" id="datatable">
                         <thead class="thead-default thead-lg">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Lote;
 use Auth;
+use Redirect;
 
 class HomeController extends Controller
 {
@@ -22,15 +23,14 @@ class HomeController extends Controller
      */
     public function home()
     {
-      if(Auth::guest())
-      {
+      if(Auth::guest()) {
         return view('layouts.home');
       }  else {
-        // $lotes = Lote::where('status',1)->get();
-        // return view('orders.create')->with('lotes',$lotes);
-        return view('orders.create');
+        return redirect()->route('orders.index');
       }
+
     }
+
     public function form()
     {
         return view('layouts.form');

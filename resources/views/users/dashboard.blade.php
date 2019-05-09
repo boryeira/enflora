@@ -26,7 +26,7 @@
                     {{-- <p class="mt-4 mb-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --}}
 
                     <div class="d-flex justify-content-around align-items-center">
-                        <a class="btn btn-success btn-rounded mr-2" href="{{route('orders.create')}}">
+                        <a class="btn btn-success btn-rounded mr-2" href="{{route('orders .create')}}">
                             <span class="btn-icon"><i class="la la-plus"></i>Ordenar</span>
                         </a>
                         <button class="btn btn-secondary btn-rounded">
