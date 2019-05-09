@@ -26,7 +26,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-      if(Auth::user()->role == 1) {
+      if(Auth::user()->role_id == 1) {
         $orders =  Order::all();
         return view('orders.index')->with('orders',$orders);
       } else {
@@ -34,7 +34,6 @@ class OrderController extends Controller
         $activeOrder = Auth::user()->activeOrder;
         return view('orders.my')->with('oldOrders',$oldOrders)->with('activeOrder',$activeOrder);
       }
-
     }
 
     // public function myOrders()

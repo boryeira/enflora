@@ -26,9 +26,9 @@ class HomeController extends Controller
       {
         return view('layouts.home');
       }  else {
-        $lotes = Lote::where('status',1)->get();
-        return view('users.dashboard')->with('lotes',$lotes);
-        
+        // $lotes = Lote::where('status',1)->get();
+        // return view('orders.create')->with('lotes',$lotes);
+        return view('orders.create');
       }
     }
     public function form()
