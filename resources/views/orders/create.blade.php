@@ -39,7 +39,8 @@
                   <br/>
 
                   <div class="card-footer text-muted">
-                    <input class="form-control" name="{{$lote->code}}" style="heigth:50%" value="0" type="number">
+                    <input class="form-control orderInput" name="{{$lote->code}}" style="heigth:50%" value="0" type="number" data-price="{{$lote->price}}">
+
                   </div>
               </div>
             </div>
@@ -47,12 +48,16 @@
         @endforeach
 
       </div>
+      <footer class="fixed-bottom text-center">
+      <div class="bg-primary">
+        <button class="btn btn-info btn-block btn-air" type="submit">ORDENAR: <span id="order_value">0</span> gs - TOTAL: $<span id="order_price">0</span></button>
+      </div>
+
+      </footer>
 
     </form>
   </div>
-  <footer class="fixed-bottom">
-    hola
-  </footer>
+
 @endsection
 
 @section('css')
@@ -66,6 +71,17 @@
   window.onload = function() {
 
     $( document ).ready(function() {
+
+      $('.orderInput').bind('input', function() {
+        var totalPoints = 0;
+        var totalPrice = 0;
+        $('.orderInput').each(function(){
+                totalPoints = parseFloat($(this).val()) + totalPoints;
+                totalPrice = parseFloat($(this).val())*$(this).data('price') + totalPrice;
+        });
+        $('#order_value').text(totalPoints);
+        $('#order_price').text(totalPrice);
+      });
 
     });
   };
