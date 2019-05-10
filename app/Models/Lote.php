@@ -11,4 +11,9 @@ class Lote extends Model
   {
       return $this->belongsTo('App\Models\Strain');
   }
+
+  public function actives()
+  {
+      return $this->where('status',1)->get();
+  }
 }

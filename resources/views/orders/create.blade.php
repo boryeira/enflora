@@ -3,75 +3,60 @@
 
 @section('content')
   <div class="page-content">
+
+
     <form class="form" action="{{route('orders.store')}}" method="POST">
       <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-    <div class="row">
-      <div class="col-lg-12">
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        <div class="ibox ibox-fullheight">
-            <div class="ibox-body">
-
-                <ul class="media-list media-list-divider">
-                  @foreach (App\Models\Strain::all() as $strain)
-                    @if($strain->lotesActive)
-                    <li class="media">
-                        <a class="media-img " >
-                            <img src="{{$strain->lotesActive->img}}" alt="image" width="120">
-                        </a>
-                        <div class="media-body d-flex row">
-                            <div class="flex-1 col-md-6 ">
-                                <h5 class="media-heading">
-                                    <a href="article.html">{{$strain->name}}</a>
-                                </h5>
-                                <p class="font-13 text-light">Cillum in incididunt reprehenderit qui reprehenderit nulla ut sint</p>
-                                <div class="font-13">
-                                    <span class="mr-4">Cosechada:
-                                        <a class="text-success" href="javascript:;">{{$strain->lotesActive->harvested_at}}</a>
-                                    </span>
-
-                                </div>
-                            </div>
-                            <div class="text-right col-md-6" >
-
-                                <div class="form-group">
-                                  <input name="{{$strain->lotesActive->code}}" style="heigth:100%" value="0">
-                                  <span class="mb-1 font-strong text-primary">cuantos gs</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </li>
-                    @endif
+      @if ($errors->any())
+        <div class="row">
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
                   @endforeach
-
-                </ul>
-
-            </div>
+              </ul>
+          </div>
         </div>
+      @endif
+
+      <div class="row">
+        @foreach (App\Models\Lote::where('status',1)->get() as $lote)
+          <div class="col-sm-12  col-md-6 	col-lg-4 	col-xl-3">
+            <div class="card card-air text-center centered mb-4">
+              <div class="rel">
+                  <img class="card-img-top" src="{{$lote->img}}" alt="image">
+
+              </div>
+
+              <div class="card-body">
+                  {{-- <div class="card-avatar mt-3 mb-4">
+                      <img class="img-circle" src="{{$lote->img}}" alt="image">
+                  </div> --}}
+                  <h4 class="card-title mb-1">{{$lote->strain->name}}</h4>
+                  <div class="text-primary">Cosechada: {{$lote->harvested_at}}</div>
+                  <div class="text-primary"><i class="ti-location-pin mr-2"></i>Curicó</div>
+                  {{-- <p class="mt-4 mb-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --}}
+                  <br/>
+
+                  <div class="card-footer text-muted">
+                    <input class="form-control" name="{{$lote->code}}" style="heigth:50%" value="0" type="number">
+                  </div>
+              </div>
+            </div>
+          </div>
+        @endforeach
+
       </div>
-      <div class="col-lg-12 text-center">
-        <button class="btn btn-success">Ordenar</button>
-      </div>
-    </div>
+
     </form>
   </div>
+  <footer class="fixed-bottom">
+    hola
+  </footer>
 @endsection
 
 @section('css')
-  <link href="{{ asset('css/jquery.bootstrap-touchspin.css') }}" rel="stylesheet">
-  <style>
-    .bootstrap-touchspin input {
-      height: 100% !important;
-    }
-  </style>
+
 @endsection
 
 @section('js')
@@ -81,16 +66,6 @@
   window.onload = function() {
 
     $( document ).ready(function() {
-      @foreach (App\Models\Strain::all() as $strain)
-        @if($strain->lotesActive)
-        $("input[name='{!!$strain->lotesActive->code!!}']").TouchSpin({
-            buttondown_class: 'btn btn-secondary ',
-            buttonup_class: 'btn btn-secondary ',
-            min: 0,
-            max: 30,
-        });
-        @endif
-      @endforeach
 
     });
   };

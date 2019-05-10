@@ -40,7 +40,11 @@
                 @endforeach
               </ul>
             @else
-              <p>Sin orden activa</p>
+              <div class="text-center">
+                <p>Sin orden activa</p>
+                <a class="btn btn-success" href="{{route('orders.create')}}">Hacer pedido</a>
+              </div>
+
             @endif
           </div>
         </div>
