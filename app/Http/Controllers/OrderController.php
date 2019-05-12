@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DarkGhostHunter\FlowSdk\Flow;
+use App\Models\User;
 use App\Models\Lote;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -28,6 +30,7 @@ class OrderController extends Controller
     {
       if(Auth::user()->role_id == 1) {
         $orders =  Order::all();
+
         return view('orders.index')->with('orders',$orders);
       } else {
         $oldOrders =  Auth::user()->oldOrders;
@@ -71,9 +74,10 @@ class OrderController extends Controller
       if((array_sum($items)>30)||(array_sum($items)<10) ) {
         return Redirect::back()->withErrors(array('quantity' => 'La orden debe ser mayor o igual a 10g y menor a 30g.'));
       }
-      if(Auth::user()->role==1)
+      if(Auth::user()->role_id==1)
       {
-        $user = Auth::user();
+        $user = User::find($request->user);
+        unset($items['user']);
       } else {
         $user = Auth::user();
       }
@@ -83,19 +87,27 @@ class OrderController extends Controller
       $order->quantity = array_sum($items);
       $order->save();
 
-      foreach ($items as $key => $item) {
-        $lote = Lote::where('code',$key)->get();
-        $item = new OrderItem;
-        $item->order_id = $order->id;
-        $item->lote_id = $key;
-        $item->quantity = $item;
-        $item->amount = $lote->price*$item;
-        $item->status = 1;
-        $item->save();
+      foreach ($items as $key => $q) {
+        if($q>0)
+        {
+          $lote = Lote::where('code',$key)->first();
+          $item = new OrderItem;
+          $item->order_id = $order->id;
+          $item->lote_id = $lote->id;
+          $item->quantity = $q;
+          $item->amount = $lote->price*$q;
+          $item->status = 1;
+          $item->save();
+        }
+
       }
 
       $order->amount = $order->items->sum('amount');
       if($order->save()) {
+        if(Auth::user()->role_id==1)
+        {
+          return Redirect::route('orders.index');
+        }
 
       } else {
         return Redirect::back()->withErrors(array('db' => 'error en base de datos'));
@@ -150,4 +162,46 @@ class OrderController extends Controller
     {
         //
     }
+
+
+    public function status(Order $order, Request $request)
+    {
+        $status = $request->stage;
+        if($status == 2){
+          $order->status = 2;
+          $order->save();
+          return redirect::back();
+        }
+        return redirect::back();
+    }
+
+    public function payFlow(Order $order)
+    {
+
+      $flow = Flow::make('production', [
+              'apiKey'    => '7B19A4CF-F041-40C4-9488-4180L75A6AAA',
+              'secret'    => '8a8c824cd4550b1ee4d581a1d3404d9d640638b0',
+          ]);
+      $flow = Flow::make('sandbox', [
+              'apiKey'    => '367F3C6A-DEB8-46F7-89E5-32CLED2236B9',
+              'secret'    => '65d9f9656b478aaa7be72267bc33f40747f47c94',
+          ]);
+
+      $paymentResponse = $flow->payment()->commit([
+          'commerceOrder'     => $order->id,
+          'subject'           => 'order',
+          'amount'            => $order->amount,
+          'email'             => 'jmanuel.jorquera@gmail.com',
+          'urlConfirmation'   => 'http://enflora.test/flow/confirm',
+          'urlReturn'         => 'http://enflora.test/flow/return',
+          'optional'          => [
+              'Message' => 'Tu orden esta en proceso!'
+          ]
+      ]);
+
+      return Redirect::to($paymentResponse->getUrl());
+
+
+    }
+
 }
