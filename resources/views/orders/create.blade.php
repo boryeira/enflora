@@ -2,24 +2,10 @@
 
 
 @section('content')
-  <div class="page-content">
-
 
     <form class="form" action="{{route('orders.store')}}" method="POST">
       <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-      @if ($errors->any())
-        <div class="row">
-          <div class="col-sm-12" >
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-          </div>
-        </div>
-      @endif
+
       @if (Auth::user()->role_id == 1)
         <div class="row">
           <div class="col-12">
@@ -71,7 +57,7 @@
       </footer>
 
     </form>
-  </div>
+
 
 @endsection
 

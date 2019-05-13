@@ -2,7 +2,7 @@
 
 
 @section('content')
-  <div class="page-content">
+
    {{-- ordenes activas  --}}
     <div class="row">
       <div class="col-xl-12">
@@ -133,5 +133,5 @@
     </div>
     {{-- ordenes pasadas  --}}
 
-</div>
+
 @endsection

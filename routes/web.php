@@ -20,6 +20,8 @@ Route::resource('/users', 'Users\UserController');
 Route::resource('/orders', 'OrderController');
 Route::get('/orders/{order}/status', 'OrderController@status')->name('order.status');
 Route::get('/orders/{order}/payflow', 'OrderController@payFlow')->name('order.payflow');
+Route::post('/flow/return', 'OrderController@returnFlow')->name('order.returnflow');
+
 
 //Route::get('/subscriptions', 'Users\SubscriptionController@all')->name('subscriptions.all');
 //Route::get('/orders', 'Users\SubscriptionController@all')->name('orders.all');
@@ -34,9 +36,7 @@ Route::middleware(['auth'])->prefix('users')->group(function ()
 Route::post('/flow/confirm', function ($name = null) {
     return 'confirm';
 });
-Route::post('/flow/return', function ($name = null) {
-    return 'return';
-});
+
 
 // Route::get('/users/{user}/subscription/create', 'UserController@subscriptionCreate')->name('users.subscription.create');
 // Route::post('/users/{user}/subscription/store', 'UserController@subscriptionStore')->name('users.subscription.store');

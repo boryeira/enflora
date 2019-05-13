@@ -37,7 +37,10 @@
           @include('layouts.sidebars.user')
         @endif
         <div class="content-wrapper">
-            @yield('content')
+            <div class="page-content">
+              @include('layouts.alerts')
+              @yield('content')
+            </div>
         </div>
       @endauth
       @guest

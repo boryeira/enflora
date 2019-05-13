@@ -2,7 +2,7 @@
 
 
 @section('content')
-  <div class="page-content">
+
     {{-- <div class="row">
 
         @foreach ($lotes as $lote)
@@ -84,5 +84,5 @@
       </div>
 
     </div>
-</div>
+
 @endsection
