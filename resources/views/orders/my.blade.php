@@ -11,34 +11,43 @@
           </div>
           <div class="ibox-body">
             @if(Auth::user()->activeOrder)
-              <ul class="media-list media-list-divider">
-                @foreach (Auth::user()->activeOrder->items as  $item)
-                  <li class="media">
-                      <div class="media-body d-flex row">
-                          <div class="flex-1 col-md-6 ">
-                              <h5 class="media-heading">
-                                  <a href="article.html">{{$item->lote->strain->name}}</a>
-                              </h5>
-                              <p class="font-13 text-light">Cillum in incididunt reprehenderit qui reprehenderit nulla ut sint</p>
-                              <div class="font-13">
-                                  <span class="mr-4">Cosechada:
-                                      <div class="text-success" >{{$item->lote->strain->lotesActive->harvested_at}}</div>
-                                  </span>
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  Estado pedido : {{Auth::user()->activeOrder->status}}
+                </div>
+                <div class="col-12 col-md-6">
+                  <ul class="media-list media-list-divider">
+                    @foreach (Auth::user()->activeOrder->items as  $item)
+                      <li class="media">
+                          <div class="media-body d-flex row">
+                              <div class="flex-1 col-md-6 ">
+                                  <h5 class="media-heading">
+                                      <a href="article.html">{{$item->lote->strain->name}}</a>
+                                  </h5>
+                                  <p class="font-13 text-light">{{$item->lote->datails}}</p>
+                                  <div class="font-13">
+                                      <span class="mr-4">Cosechada:
+                                          <div class="text-success" >{{$item->lote->strain->lotesActive->harvested_at}}</div>
+                                      </span>
+
+                                  </div>
+                              </div>
+                              <div class="text-right col-md-6" >
+
+                                  <div class="form-group">
+                                    <input name="{{$item->lote->strain->lotesActive->code}}" style="heigth:100%" value="0">
+                                    <span class="mb-1 font-strong text-primary">cuantos gs</span>
+                                  </div>
 
                               </div>
                           </div>
-                          <div class="text-right col-md-6" >
+                      </li>
+                    @endforeach
+                  </ul>
+                </div>
+              </div>
 
-                              <div class="form-group">
-                                <input name="{{$item->lote->strain->lotesActive->code}}" style="heigth:100%" value="0">
-                                <span class="mb-1 font-strong text-primary">cuantos gs</span>
-                              </div>
 
-                          </div>
-                      </div>
-                  </li>
-                @endforeach
-              </ul>
             @else
               <div class="text-center">
                 <p>Sin orden activa</p>
