@@ -10,9 +10,9 @@ class Order extends Model
   {
     $rawStatus = [
       '1'=> ['Pendiente','secondary','1'],
-      '2'=> ['Confirmado','primary','2'],
-      '3'=> ['Pagado','danger','3'],
-      '4'=> ['Entregado','success','4']
+      '2'=> ['Confirmado','info','2'],
+      '3'=> ['Pagado','success','3'],
+      '4'=> ['Entregado','primary','4']
     ];
     return $rawStatus[$value];
   }

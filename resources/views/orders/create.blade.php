@@ -80,7 +80,9 @@
           if($(this).val()=='')$(this).val(0);
 
               totalPoints = parseFloat($(this).val()) + totalPoints;
+              totalPoints = totalPoints.replace(/^0+/, '');
               totalPrice = parseFloat($(this).val())*$(this).data('price') + totalPrice;
+
         });
         $('#order_value').text(totalPoints);
         $('#order_price').text(totalPrice);

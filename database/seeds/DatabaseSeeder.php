@@ -23,8 +23,19 @@ class DatabaseSeeder extends Seeder
               'created_at' => now(),
               'updated_at' => now(),
           ),
+          1 =>
+          array (
+              'id' => 2,
+              'first_name' => 'Jose',
+              'last_name' => 'Jorquera',
+              'email' => 'jmanuel.jorquera@gmail.com',
+              'password' => bcrypt('123123'),
+              'role_id' => 2,
+              'created_at' => now(),
+              'updated_at' => now(),
+          ),
         ));
-        factory(App\Models\User::class, 10)->create();
+        //factory(App\Models\User::class, 10)->create();
 
         \DB::table('strains')->insert(array (
             0 =>

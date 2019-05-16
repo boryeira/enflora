@@ -12,3 +12,16 @@
     </div>
   </div>
 @endif
+
+{{-- success alerts --}}
+@if (Session::has('success'))
+  <div class="row">
+    <div class="col-sm-12" >
+      <div class="alert alert-success">
+          <ul>
+              <li>{{ Session::get('success') }}</li>
+          </ul>
+      </div>
+    </div>
+  </div>
+@endif

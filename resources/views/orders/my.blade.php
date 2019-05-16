@@ -8,37 +8,46 @@
         <div class="ibox ">
           <div class="ibox-head">
               <div class="ibox-title">Orden activa</div>
+              <div class="ibox-tools">
+                  <button class="btn btn-danger" data-toggle="dropdown"><i class="ti-trash"></i></button>
+              </div>
           </div>
           <div class="ibox-body">
-            @if(Auth::user()->activeOrder)
+            @if($activeOrder)
               <div class="row">
-                <div class="col-12 col-md-6">
-                  Estado pedido : {{Auth::user()->activeOrder->status}}
+
+                <div class="col-12 col-md-6 well">
+                  <h5 class="font-strong">Detalles</h5>
+                  Estado pedido :  <span class="badge badge-{{$activeOrder->status[1]}} ">{{$activeOrder->status[0]}}</span><br />
+                  Gramos totales :  <span class=" ">{{$activeOrder->quantity}}</span><br />
+                  Total a pagar :  <span class=" ">{{$activeOrder->quantity}}</span><br />
+                  <br />
+                  <br />
                 </div>
                 <div class="col-12 col-md-6">
+                  <h5 class="font-strong">Variedades</h5>
                   <ul class="media-list media-list-divider">
-                    @foreach (Auth::user()->activeOrder->items as  $item)
+                    @foreach ($activeOrder->items as  $item)
                       <li class="media">
+                        <a class="media-img" href="javascript:;">
+                            <img src="{{$item->lote->img}}" alt="image" width="100">
+                        </a>
+
                           <div class="media-body d-flex row">
                               <div class="flex-1 col-md-6 ">
-                                  <h5 class="media-heading">
-                                      <a href="article.html">{{$item->lote->strain->name}}</a>
-                                  </h5>
-                                  <p class="font-13 text-light">{{$item->lote->datails}}</p>
-                                  <div class="font-13">
-                                      <span class="mr-4">Cosechada:
-                                          <div class="text-success" >{{$item->lote->strain->lotesActive->harvested_at}}</div>
+                                  <div class="media-heading">
+                                    {{$item->lote->strain->name}}
+                                  </div>
+
+                                  <div class="text-mute">
+                                      <span class="mr-4">Cosechada: {{$item->lote->strain->lotesActive->harvested_at}}
+
                                       </span>
 
                                   </div>
                               </div>
                               <div class="text-right col-md-6" >
-
-                                  <div class="form-group">
-                                    <input name="{{$item->lote->strain->lotesActive->code}}" style="heigth:100%" value="0">
-                                    <span class="mb-1 font-strong text-primary">cuantos gs</span>
-                                  </div>
-
+                                <h4 class="font-strong float-right text-right">{{$item->quantity}}<sub>gs</sub></h4>
                               </div>
                           </div>
                       </li>
@@ -56,15 +65,25 @@
 
             @endif
           </div>
+          @if($activeOrder->status[2]==1)
+          <div class="ibox-footer bg-{{$activeOrder->status[1]}}">
+            Orden pendiente en espera de aprobacion por parte del club. Al momento de ser aprovada sera informado via correo electronico.
+          </div>
+          @endif
+          @if($activeOrder->status[2]==2)
+          <div class="ibox-footer bg-{{$activeOrder->status[1]}}">
+            Orden aceptada para realizar pago. Solo se aceptan pagos mediate la plataforma FLOW.CL <button class="btn btn-danger">Más información</a> 
+          </div>
+          @endif
         </div>
       </div>
       <div class="col-xl-12">
         <div class="ibox">
             <div class="ibox-body">
                 <h5 class="font-strong mb-4">Ordenes antiguas</h5>
-                <div class="table-responsive row">
-                    <table class="table table-bordered table-hover" id="datatable">
-                        <thead class="thead-default thead-lg">
+                <div class="table-responsive ">
+                    <table class="table table-hover" id="datatable">
+                        <thead class="thead-default ">
                             <tr>
                                 <th>Order ID</th>
                                 <th>Gramos</th>
