@@ -2,7 +2,7 @@
 
 
 @section('content')
-<div class="" >
+
     <div class="row justify-content-center" >
         <div class="col-md-8 text-center">
           <a href="/"><img src="{{asset('img/enflora.png')}}" width="450" style="margin-bottom:50px;margin-top:50px;"/></a>
@@ -12,5 +12,5 @@
           </div>
         </div>
     </div>
-</div>
+
 @endsection

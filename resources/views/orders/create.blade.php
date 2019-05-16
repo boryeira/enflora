@@ -2,19 +2,24 @@
 
 
 @section('content')
-  <div class="page-content">
-
 
     <form class="form" action="{{route('orders.store')}}" method="POST">
       <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-      @if ($errors->any())
+
+      @if (Auth::user()->role_id == 1)
         <div class="row">
-          <div class="alert alert-danger">
-              <ul>
-                  @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
+          <div class="col-12">
+            <div class="ibox">
+              <div class="ibox-body">
+                <label>seleccionar usuario</label>
+                <select class="form-control" name="user">
+                  @foreach (App\Models\User::all() as  $user)
+                    <option value="{{$user->id}}">{{$user->full_name}}</option>
                   @endforeach
-              </ul>
+                </select>
+              </div>
+            </div>
+
           </div>
         </div>
       @endif
@@ -25,13 +30,9 @@
             <div class="card card-air text-center centered mb-4">
               <div class="rel">
                   <img class="card-img-top" src="{{$lote->img}}" alt="image">
-
               </div>
 
               <div class="card-body">
-                  {{-- <div class="card-avatar mt-3 mb-4">
-                      <img class="img-circle" src="{{$lote->img}}" alt="image">
-                  </div> --}}
                   <h4 class="card-title mb-1">{{$lote->strain->name}}</h4>
                   <div class="text-primary">Cosechada: {{$lote->harvested_at}}</div>
                   <div class="text-primary"><i class="ti-location-pin mr-2"></i>Curicó</div>
@@ -56,7 +57,7 @@
       </footer>
 
     </form>
-  </div>
+
 
 @endsection
 
@@ -76,8 +77,10 @@
         var totalPoints = 0;
         var totalPrice = 0;
         $('.orderInput').each(function(){
-                totalPoints = parseFloat($(this).val()) + totalPoints;
-                totalPrice = parseFloat($(this).val())*$(this).data('price') + totalPrice;
+          if($(this).val()=='')$(this).val(0);
+
+              totalPoints = parseFloat($(this).val()) + totalPoints;
+              totalPrice = parseFloat($(this).val())*$(this).data('price') + totalPrice;
         });
         $('#order_value').text(totalPoints);
         $('#order_price').text(totalPrice);

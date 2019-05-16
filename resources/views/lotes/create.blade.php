@@ -3,7 +3,7 @@
 
 
 @section('content')
-<div class="page-content ">
+
   <div class="ibox ibox-fullheight">
         <div class="ibox-head">
             <div class="ibox-title">Ingreso de lote</div>
@@ -71,7 +71,7 @@
             </div>
         </form>
     </div>
-</div>
+
 @endsection
 
 @section('css')
