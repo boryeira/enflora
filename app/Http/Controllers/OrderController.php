@@ -170,12 +170,13 @@ class OrderController extends Controller
     public function status(Order $order, Request $request)
     {
         $status = $request->stage;
-        if($status == 2){
-          $order->status = 2;
+        if($status != ''){
+          $order->status = $status;
           $order->save();
           return redirect::back();
         }
         return redirect::back();
+
     }
 
 

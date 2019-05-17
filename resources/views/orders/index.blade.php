@@ -118,6 +118,9 @@
                               @if($order->status[2]==2)
                                 <a type="button" class="btn btn-danger" href="{{route('order.payflow',['order'=>$order->id])}}" >Pagar</a>
                               @endif
+                              @if($order->status[2]==3)
+                                <a type="button" class="btn btn-success" href="{{route('order.status',['order'=>$order->id])}}?stage=4" >entregado</a>
+                              @endif
                               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             </div>
 
