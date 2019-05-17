@@ -57,7 +57,12 @@
 
               </ul>
           </li>
-
+          <li>
+            <form class="form-info m-3" action="{{route('logout')}}" method="POST" >
+              <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+              <button class="d-flex align-items-center btn btn-danger btn-sm">Logout<i class="ti-shift-right ml-2 font-20"></i></button>
+            </form>
+          </li>
 
     </ul>
     <div class="slimScrollBar">
