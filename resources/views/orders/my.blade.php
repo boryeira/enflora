@@ -55,7 +55,25 @@
                   </ul>
                 </div>
               </div>
-
+              @if($activeOrder->status[2]==1)
+              <div class="ibox-footer bg-{{$activeOrder->status[1]}}">
+                Orden pendiente en espera de aprobacion por parte del club. Al momento de ser aprovada sera informado via correo electronico.
+              </div>
+              @endif
+              @if($activeOrder->status[2]==2)
+              <div class="ibox-footer bg-{{$activeOrder->status[1]}}">
+                <a href="{{route('order.payflow',['order'=>$activeOrder->id])}}" class="text-right btn btn-primary">Pagar orden</a><br /> <span class="mr-4" >
+                  Orden aceptada para realizar pago. Solo se aceptan pagos mediate la plataforma FLOW.CL
+                </apan>
+              </div>
+              @endif
+              @if($activeOrder->status[2]==3)
+              <div class="ibox-footer bg-{{$activeOrder->status[1]}}">
+                <span class="mr-4" >
+                  Orden pagada, uno de nuestros miembros se contactara con usted para coordinar la entrega.
+                </apan>
+              </div>
+              @endif
 
             @else
               <div class="text-center">
@@ -65,25 +83,7 @@
 
             @endif
           </div>
-          @if($activeOrder->status[2]==1)
-          <div class="ibox-footer bg-{{$activeOrder->status[1]}}">
-            Orden pendiente en espera de aprobacion por parte del club. Al momento de ser aprovada sera informado via correo electronico.
-          </div>
-          @endif
-          @if($activeOrder->status[2]==2)
-          <div class="ibox-footer bg-{{$activeOrder->status[1]}}">
-            <a href="{{route('order.payflow',['order'=>$activeOrder->id])}}" class="text-right btn btn-primary">Pagar orden</a><br /> <span class="mr-4" >
-              Orden aceptada para realizar pago. Solo se aceptan pagos mediate la plataforma FLOW.CL
-            </apan>
-          </div>
-          @endif
-          @if($activeOrder->status[2]==3)
-          <div class="ibox-footer bg-{{$activeOrder->status[1]}}">
-            <span class="mr-4" >
-              Orden pagada, uno de nuestros miembros se contactara con usted para coordinar la entrega.
-            </apan>
-          </div>
-          @endif
+
         </div>
       </div>
       <div class="col-xl-12">
@@ -97,29 +97,24 @@
                                 <th>Order ID</th>
                                 <th>Gramos</th>
                                 <th>Total</th>
-                                <th>Entregado</th>
-                                <th class="no-sort"></th>
+                                <th>Fecha entrega</th>
+
                             </tr>
                         </thead>
                         <tbody>
                           @foreach($oldOrders as $order)
                             <tr>
                                 <td>
-                                  <a href="javascript:;">{{$order->id}}</a>
-                                </td>
-                                <td>
-                                  <a href="javascript:;">{{$order->id}}</a>
+                                  <a href="javascript:;">#{{$order->id}}</a>
                                 </td>
                                 <td>
                                   {{$order->quantity}}
                                 </td>
                                 <td>
-                                    <span class="badge badge-success badge-pill">{{$order->status}}</span>
+                                  {{$order->amount}}
                                 </td>
-
-                                <td>17.05.2018</td>
                                 <td>
-                                    <a class="text-muted font-16" href="javascript:;"><i class="ti-trash"></i></a>
+                                    {{$order->delivery_date}}
                                 </td>
                             </tr>
                           @endforeach

@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+  protected $dates = [
+      'delivery_date','pay_date'
+  ];
   public function getStatusAttribute($value)
   {
     $rawStatus = [

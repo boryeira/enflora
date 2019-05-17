@@ -38,6 +38,7 @@ class OrderController extends Controller
       } else {
         $oldOrders =  Auth::user()->oldOrders;
         $activeOrder = Auth::user()->activeOrder;
+
         return view('orders.my')->with('oldOrders',$oldOrders)->with('activeOrder',$activeOrder);
       }
     }
@@ -172,6 +173,9 @@ class OrderController extends Controller
         $status = $request->stage;
         if($status != ''){
           $order->status = $status;
+          if($status==4){
+            $order->delivered_at = now();
+          }
           $order->save();
           return redirect::back();
         }
