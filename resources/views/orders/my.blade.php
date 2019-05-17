@@ -72,7 +72,16 @@
           @endif
           @if($activeOrder->status[2]==2)
           <div class="ibox-footer bg-{{$activeOrder->status[1]}}">
-            Orden aceptada para realizar pago. Solo se aceptan pagos mediate la plataforma FLOW.CL <button class="btn btn-danger">Más información</a> 
+            <a href="{{route('order.payflow',['order'=>$activeOrder->id])}}" class="text-right btn btn-primary">Pagar orden</a><br /> <span class="mr-4" >
+              Orden aceptada para realizar pago. Solo se aceptan pagos mediate la plataforma FLOW.CL
+            </apan>
+          </div>
+          @endif
+          @if($activeOrder->status[2]==3)
+          <div class="ibox-footer bg-{{$activeOrder->status[1]}}">
+            <span class="mr-4" >
+              Pago realizado con exito. Uno de nuestros miembros se contactara con usted para coordinar la entrega.
+            </apan>
           </div>
           @endif
         </div>

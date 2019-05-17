@@ -230,7 +230,7 @@ class OrderController extends Controller
         return Redirect::route('orders.index')->withErrors(array('flow' =>'no se realizo el pago'));
       } else {
         $order->status = 3;
-        //$order->pay_at = $paymentData['date'];
+        $order->pay_at = $paymentData['date'];
         $order->save();
         Session::flash('success','Pago realizado con éxito - fecha '.$paymentData['date']);
         return Redirect::route('orders.index');
