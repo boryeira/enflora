@@ -80,7 +80,7 @@
           @if($activeOrder->status[2]==3)
           <div class="ibox-footer bg-{{$activeOrder->status[1]}}">
             <span class="mr-4" >
-              Pago realizado con exito. Uno de nuestros miembros se contactara con usted para coordinar la entrega.
+              Orden pagada, uno de nuestros miembros se contactara con usted para coordinar la entrega.
             </apan>
           </div>
           @endif
