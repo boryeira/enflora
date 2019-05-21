@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'jose.jorquera@agroptimo.com'),
-        'name' => env('MAIL_FROM_NAME', 'agroptimo'),
+        'address' => env('MAIL_FROM_ADDRESS', 'pago@enfloraclub.cl'),
+        'name' => env('MAIL_FROM_NAME', 'enFlora'),
     ],
 
     /*
