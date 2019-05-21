@@ -11,15 +11,20 @@ class OrderPay extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $order;
+    public $items;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($order,$items)
     {
-        //
+        $this->order = $order;
+        $this->items = $items;
     }
+
 
     /**
      * Build the message.
@@ -28,7 +33,7 @@ class OrderPay extends Mailable
      */
     public function build()
     {
-      return $this->from('jose.jorquera@agroptimo.com')
+      return $this->from('pago@enfloraclub.cl')
                   ->view('mails.orders.pay');
     }
 }

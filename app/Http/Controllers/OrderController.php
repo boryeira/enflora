@@ -252,9 +252,10 @@ class OrderController extends Controller
 
     }
 
-    public function mail()
+    public function payMail(Order $order)
     {
-        Mail::to('jmanuel.jorquera@gmail.com')->send(new OrderPay());
+        Mail::to($order->user)->send(new OrderPay($order));
+        return 'mail enviado';
     }
 
 
