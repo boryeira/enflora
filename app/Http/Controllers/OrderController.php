@@ -115,6 +115,7 @@ class OrderController extends Controller
         {
           return Redirect::route('orders.index');
         }
+        return Redirect::route('orders.index');
 
       } else {
         return Redirect::back()->withErrors(array('db' => 'error en base de datos'));
