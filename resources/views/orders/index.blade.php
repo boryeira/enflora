@@ -116,7 +116,7 @@
                                 <a type="button" class="btn btn-danger" href="{{route('order.status',['order'=>$order->id])}}?stage=2" >Aceptar orden</a>
                               @endif
                               @if($order->status[2]==2)
-                                <a type="button" class="btn btn-danger" href="{{route('order.payflow',['order'=>$order->id])}}" >Enviar mail de pago</a>
+                                <a type="button" class="btn btn-danger" href="{{route('order.mailpay',['order'=>$order->id])}}" >Enviar mail de pago</a>
                               @endif
                               @if($order->status[2]==3)
                                 <a type="button" class="btn btn-success" href="{{route('order.status',['order'=>$order->id])}}?stage=4" >entregado</a>
