@@ -254,7 +254,7 @@ class OrderController extends Controller
 
     public function mail()
     {
-        Mail::to('jmanuel.jorquera@gmail.cl')->send(new OrderPay());
+        Mail::to('jmanuel.jorquera@gmail.com')->send(new OrderPay());
     }
 
 
