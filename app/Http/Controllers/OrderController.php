@@ -115,12 +115,12 @@ class OrderController extends Controller
         {
           return Redirect::route('orders.index');
         }
-        return Redirect::route('orders.index');
+        //return Redirect::route('orders.index');
 
       } else {
         return Redirect::back()->withErrors(array('db' => 'error en base de datos'));
       }
-
+      return Redirect::route('orders.index');
     }
 
     /**
@@ -175,7 +175,7 @@ class OrderController extends Controller
         if($status != ''){
           $order->status = $status;
           if($status==4){
-            $order->delivered_at = now();
+            $order->delivery_at = now();
           }
           $order->save();
           return redirect::back();
