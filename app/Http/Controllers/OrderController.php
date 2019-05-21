@@ -254,7 +254,7 @@ class OrderController extends Controller
 
     public function payMail(Order $order)
     {
-        Mail::to($order->user)->send(new OrderPay($order));
+        Mail::to($order->user)->send(new OrderPay($order,$order->items));
         return 'mail enviado';
     }
 
