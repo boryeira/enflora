@@ -18,7 +18,7 @@
 
               </ul>
           </li>
-          <li>
+          {{-- <li>
                 <a  href="javascript:;" aria-expanded="false"><i class="sidebar-item-icon ti-star"></i>
                     <span class="nav-label">Variedades</span><i class="fa fa-angle-left arrow"></i></a>
                 <ul  class="nav-2-level collapse" aria-expanded="false" style="height: 0px;">
@@ -27,19 +27,28 @@
                     </li>
                     {{-- <li>
                         <a href="{{route('lotes.create')}}">Agregar</a>
-                    </li> --}}
+                    </li>
 
                 </ul>
-            </li>
+            </li> --}}
 
-        <li >
-            <a href="#"><i class="sidebar-item-icon ti-home"></i>
-                <span class="nav-label">Ordenes</span><i class="fa fa-angle-left arrow"></i></a>
-        </li>
-        <li>
+            <li >
+                  <a href="javascript:;" aria-expanded="false"><i class="sidebar-item-icon ti-receipt"></i>
+                      <span class="nav-label">Ordenes</span><i class="fa fa-angle-left arrow"></i></a>
+                  <ul class="nav-2-level collapse" aria-expanded="false" style="height: 0px;">
+                      <li>
+                          <a href="{{route('orders.index')}}">Todas</a>
+                      </li>
+                      <li>
+                          <a href="{{route('orders.create')}}">Agregar</a>
+                      </li>
+
+                  </ul>
+              </li>
+        {{-- <li>
             <a href="#"><i class="sidebar-item-icon ti-home"></i>
                 <span class="nav-label">Pagos</span><i class="fa fa-angle-left arrow"></i></a>
-        </li>
+        </li> --}}
         {{-- <li >
             <a href="#"><i class="sidebar-item-icon ti-home"></i>
                 <span class="nav-label">Usuarios</span><i class="fa fa-angle-left arrow"></i></a>

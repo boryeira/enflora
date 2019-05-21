@@ -11,6 +11,11 @@ use Redirect;
 
 class UserController extends Controller
 {
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
+
   public function index()
   {
       $users = User::all();
@@ -29,7 +34,16 @@ class UserController extends Controller
       $user->last_name = $request->last_name;
       $user->rut = $request->rut;
       $user->email = $request->email;
+      $user->phone = $request->phone;
+      $user->role_id = 2;
       $user->password = Hash::make('enflora');
+
+
+      if ($request->recipe) {
+          request()->file('recipe')->storeAs('public/recipes', $user->id.'.jpg');
+      }
+      $user->recipe = url('/').'/storage/recipes/'.$user->id.'.jpg';
+
       $user->save();
       return redirect::route('users.show',['user'=>$user->id]);
   }

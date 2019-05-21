@@ -12,6 +12,7 @@
 */
 Route::get('/', 'HomeController@home')->name('home');
 Route::get('/form', 'HomeController@form')->name('form');
+Route::get('/mail', 'OrderController@mail')->name('mail');
 
 Auth::routes();
 

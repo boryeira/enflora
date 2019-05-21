@@ -9,10 +9,12 @@ use App\Models\User;
 use App\Models\Lote;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Mail\Orders\OrderPay;
 use Auth;
 use Redirect;
 use Exception;
 use Session;
+use Mail;
 
 
 
@@ -32,7 +34,7 @@ class OrderController extends Controller
     public function index()
     {
       if(Auth::user()->role_id == 1) {
-        $orders =  Order::all();
+        $orders =  Order::orderBy('created_at', 'desc')->get();
 
         return view('orders.index')->with('orders',$orders);
       } else {
@@ -102,8 +104,9 @@ class OrderController extends Controller
           $item->amount = $lote->price*$q;
           $item->status = 1;
           $item->save();
+          $lote->consumed = $lote->consumed + $q;
+          $lote->save();
         }
-
       }
 
       $order->amount = $order->items->sum('amount');
@@ -249,7 +252,10 @@ class OrderController extends Controller
 
     }
 
-
+    public function mail()
+    {
+        Mail::to('jmanuel.jorquera@gmail.cl')->send(new OrderPay());
+    }
 
 
 }
