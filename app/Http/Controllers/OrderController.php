@@ -203,8 +203,8 @@ class OrderController extends Controller
                 'subject'           => 'order',
                 'amount'            => $order->amount,
                 'email'             => $order->user->email,
-                'urlConfirmation'   => 'http://enflora.test/flow/confirm',
-                'urlReturn'         => 'http://enflora.test/flow/return',
+                'urlConfirmation'   => url('/').'flow/confirm',
+                'urlReturn'         => url('/').'flow/return',
                 'optional'          => [
                     'Message' => 'Tu orden esta en proceso!'
                 ]
