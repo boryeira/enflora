@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lote extends Model
 {
+  
+  protected $with = array('strain');
 
   public function strain()
   {

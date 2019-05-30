@@ -9,10 +9,10 @@ use storage;
 
 class LoteController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -22,6 +22,12 @@ class LoteController extends Controller
     {
         $lotes = Lote::all();
         return view('lotes.index')->with('lotes',$lotes);
+    }
+    public function batches()
+    {
+      $lotes = Lote::all();
+      $batches = $lotes->toArray();
+      return response()->json($batches);
     }
 
     /**
