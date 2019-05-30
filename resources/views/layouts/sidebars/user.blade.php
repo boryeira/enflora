@@ -20,7 +20,7 @@
 
               </ul> --}}
           </li>
-          <li class="{{Helper::navigation_selected('strains')}}" >
+          {{-- <li class="{{Helper::navigation_selected('strains')}}" >
                 <a href="{{route('orders.index')}}" aria-expanded="false"><i class="sidebar-item-icon ti-layout-grid3"></i>
                     <span class="nav-label">Variedades</span><i class="fa fa-angle-left arrow"></i></a>
 
@@ -30,7 +30,7 @@
               <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
               <button class="d-flex align-items-center btn btn-danger btn-sm">Logout<i class="ti-shift-right ml-2 font-20"></i></button>
             </form>
-          </li>
+          </li> --}}
 
     </ul>
     <div class="slimScrollBar">

@@ -20,7 +20,7 @@ class LoteController extends Controller
      */
     public function index()
     {
-        $lotes = Lote::all();
+        $lotes = Lote::orderBy('created_at', 'desc')->get();
         return view('lotes.index')->with('lotes',$lotes);
     }
     public function batches()

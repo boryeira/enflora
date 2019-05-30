@@ -12,6 +12,7 @@
 */
 Route::get('/', 'HomeController@home')->name('home');
 Route::get('/form', 'HomeController@form')->name('form');
+Route::get('/mail', 'OrderController@mail')->name('mail');
 
 Auth::routes();
 
@@ -19,8 +20,10 @@ Route::resource('/lotes', 'LoteController');
 Route::resource('/users', 'Users\UserController');
 Route::resource('/orders', 'OrderController');
 Route::get('/orders/{order}/status', 'OrderController@status')->name('order.status');
+Route::get('/orders/{order}/mailpay', 'OrderController@payMail')->name('order.paymail');
 Route::get('/orders/{order}/payflow', 'OrderController@payFlow')->name('order.payflow');
 Route::post('/flow/return', 'OrderController@returnFlow')->name('order.returnflow');
+
 
 
 //Route::get('/subscriptions', 'Users\SubscriptionController@all')->name('subscriptions.all');

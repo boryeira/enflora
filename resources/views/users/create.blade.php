@@ -1,17 +1,14 @@
 @extends('layouts.app')
 
-@section('sidebar')
-  @include('layouts.sidebar',['page'=>'usuarios'])
-@endsection
-
 
 @section('content')
 <div class="page-content ">
   <div class="ibox ibox-fullheight">
         <div class="ibox-head">
             <div class="ibox-title">Ingreso Usuario</div>
+
         </div>
-        <form class="form-info" action="{{route('users.store')}}" method="POST">
+        <form class="form-info" action="{{route('users.store')}}" method="POST" enctype="multipart/form-data">
            <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
             <div class="ibox-body">
                 <div class="row">
@@ -30,6 +27,14 @@
                     <div class="col-sm-6 form-group mb-6">
                         <label>Email</label>
                         <input class="form-control" type="email"  name="email">
+                    </div>
+                    <div class="col-sm-6 form-group mb-6">
+                        <label>Telefono</label>
+                        <input class="form-control" type="text"  name="phone">
+                    </div>
+                    <div class="col-sm-6 form-group mb-6">
+                      <label>Receta:</label>
+                      <input type="file" name="recipe"   >
                     </div>
 
                 </div>

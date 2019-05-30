@@ -69,27 +69,21 @@
   <script src="{{ asset('js/jquery.bootstrap-touchspin.js') }}" defer></script>
 
   <script defer>
-  window.onload = function() {
-
-    $( document ).ready(function() {
-
-      $('.orderInput').bind('input', function() {
-        var totalPoints = 0;
-        var totalPrice = 0;
-        $('.orderInput').each(function(){
-          if($(this).val()=='')$(this).val(0);
-
-              totalPoints = parseFloat($(this).val()) + totalPoints;
-              totalPoints = totalPoints.replace(/^0+/, '');
-              totalPrice = parseFloat($(this).val())*$(this).data('price') + totalPrice;
-
+    window.onload = function() {
+      $( document ).ready(function() {
+        $('.orderInput').bind('input', function() {
+          var totalPoints = 0;
+          var totalPrice = 0;
+          $('.orderInput').each(function(){
+            if($(this).val()=='')$(this).val(0);
+                totalPoints = parseFloat($(this).val()) + totalPoints;
+                totalPrice = parseFloat($(this).val())*$(this).data('price') + totalPrice;
+          });
+          $('#order_value').text(totalPoints);
+          $('#order_price').text(totalPrice);
         });
-        $('#order_value').text(totalPoints);
-        $('#order_price').text(totalPrice);
+
       });
-
-    });
-  };
-
+    };
   </script>
 @endsection

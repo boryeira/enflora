@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class OrderObserver
 {
-  public function creating(Order $order)
-  {
-
-  }
+  // public function creating(Order $order)
+  // {
+  //
+  // }
 }

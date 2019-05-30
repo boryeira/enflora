@@ -58,7 +58,7 @@
 {{--
                                 <td>{{$order->delivered_at || '--'}}</td> --}}
                                 <td>
-                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal{{$order->id}}"><i class="ti-info"></i></button>
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal{{$order->id}}"><i class="fa fa-info"></i></button>
                                 </td>
                             </tr>
                             <!-- The Modal -->
@@ -116,12 +116,12 @@
                                 <a type="button" class="btn btn-danger" href="{{route('order.status',['order'=>$order->id])}}?stage=2" >Aceptar orden</a>
                               @endif
                               @if($order->status[2]==2)
-                                <a type="button" class="btn btn-danger" href="{{route('order.payflow',['order'=>$order->id])}}" >Pagar</a>
+                                <a type="button" class="btn btn-danger" href="{{route('order.paymail',['order'=>$order->id])}}" >Enviar mail de pago</a>
                               @endif
                               @if($order->status[2]==3)
                                 <a type="button" class="btn btn-success" href="{{route('order.status',['order'=>$order->id])}}?stage=4" >entregado</a>
                               @endif
-                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
 
                           </div>

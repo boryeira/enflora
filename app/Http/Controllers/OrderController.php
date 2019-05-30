@@ -9,10 +9,12 @@ use App\Models\User;
 use App\Models\Lote;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Mail\Orders\OrderPay;
 use Auth;
 use Redirect;
 use Exception;
 use Session;
+use Mail;
 
 
 
@@ -32,7 +34,7 @@ class OrderController extends Controller
     public function index()
     {
       if(Auth::user()->role_id == 1) {
-        $orders =  Order::all();
+        $orders =  Order::orderBy('created_at', 'desc')->get();
 
         return view('orders.index')->with('orders',$orders);
       } else {
@@ -102,8 +104,9 @@ class OrderController extends Controller
           $item->amount = $lote->price*$q;
           $item->status = 1;
           $item->save();
+          $lote->consumed = $lote->consumed + $q;
+          $lote->save();
         }
-
       }
 
       $order->amount = $order->items->sum('amount');
@@ -112,14 +115,12 @@ class OrderController extends Controller
         {
           return Redirect::route('orders.index');
         }
+        //return Redirect::route('orders.index');
 
       } else {
         return Redirect::back()->withErrors(array('db' => 'error en base de datos'));
       }
-
-
-
-
+      return Redirect::route('orders.index');
     }
 
     /**
@@ -174,7 +175,7 @@ class OrderController extends Controller
         if($status != ''){
           $order->status = $status;
           if($status==4){
-            $order->delivered_at = now();
+            $order->delivery_at = now();
           }
           $order->save();
           return redirect::back();
@@ -188,14 +189,14 @@ class OrderController extends Controller
     public function payFlow(Order $order)
     {
 
-      $flow = Flow::make('production', [
-              'apiKey'    => '7B19A4CF-F041-40C4-9488-4180L75A6AAA',
-              'secret'    => '8a8c824cd4550b1ee4d581a1d3404d9d640638b0',
-          ]);
-      // $flow = Flow::make('sandbox', [
-      //         'apiKey'    => '367F3C6A-DEB8-46F7-89E5-32CLED2236B9',
-      //         'secret'    => '65d9f9656b478aaa7be72267bc33f40747f47c94',
+      // $flow = Flow::make('production', [
+      //         'apiKey'    => '7B19A4CF-F041-40C4-9488-4180L75A6AAA',
+      //         'secret'    => '8a8c824cd4550b1ee4d581a1d3404d9d640638b0',
       //     ]);
+      $flow = Flow::make('sandbox', [
+              'apiKey'    => '367F3C6A-DEB8-46F7-89E5-32CLED2236B9',
+              'secret'    => '65d9f9656b478aaa7be72267bc33f40747f47c94',
+          ]);
 
           try {
             $paymentResponse = $flow->payment()->commit([
@@ -203,8 +204,8 @@ class OrderController extends Controller
                 'subject'           => 'order',
                 'amount'            => $order->amount,
                 'email'             => $order->user->email,
-                'urlConfirmation'   => 'http://enflora.test/flow/confirm',
-                'urlReturn'         => 'http://enflora.test/flow/return',
+                'urlConfirmation'   => url('/').'/flow/confirm',
+                'urlReturn'         => url('/').'/flow/return',
                 'optional'          => [
                     'Message' => 'Tu orden esta en proceso!'
                 ]
@@ -222,14 +223,14 @@ class OrderController extends Controller
 
     public function returnFlow(Request $request)
     {
-      // $flow = Flow::make('sandbox', [
-      //         'apiKey'    => '367F3C6A-DEB8-46F7-89E5-32CLED2236B9',
-      //         'secret'    => '65d9f9656b478aaa7be72267bc33f40747f47c94',
-      //     ]);
-      $flow = Flow::make('production', [
-              'apiKey'    => '7B19A4CF-F041-40C4-9488-4180L75A6AAA',
-              'secret'    => '8a8c824cd4550b1ee4d581a1d3404d9d640638b0',
+      $flow = Flow::make('sandbox', [
+              'apiKey'    => '367F3C6A-DEB8-46F7-89E5-32CLED2236B9',
+              'secret'    => '65d9f9656b478aaa7be72267bc33f40747f47c94',
           ]);
+      // $flow = Flow::make('production', [
+      //         'apiKey'    => '7B19A4CF-F041-40C4-9488-4180L75A6AAA',
+      //         'secret'    => '8a8c824cd4550b1ee4d581a1d3404d9d640638b0',
+      //     ]);
 
       $payment = $flow->payment()->get($request->token);
 
@@ -245,11 +246,15 @@ class OrderController extends Controller
         Session::flash('success','Pago realizado con éxito - fecha '.$paymentData['date']);
         return Redirect::route('orders.index');
       }
-      return Redirect::route('orders.index')->with();
+      return Redirect::route('orders.index');
 
     }
 
-
+    public function payMail(Order $order)
+    {
+        Mail::to($order->user)->send(new OrderPay($order,$order->items));
+        return 'mail enviado';
+    }
 
 
 }
