@@ -35,8 +35,10 @@ class OrderController extends Controller
     {
       if(Auth::user()->role_id == 1) {
         $orders =  Order::orderBy('created_at', 'desc')->get();
+        $oldOrders =  Order::where('status',4)->get();
+        $activeOrder = Order::where('status','!=',4)->get();
 
-        return view('orders.index')->with('orders',$orders);
+        return view('orders.index')->with('oldOrders',$oldOrders)->with('activeOrder',$activeOrder);
       } else {
         $oldOrders =  Auth::user()->oldOrders;
         $activeOrder = Auth::user()->activeOrder;
@@ -175,7 +177,7 @@ class OrderController extends Controller
         if($status != ''){
           $order->status = $status;
           if($status==4){
-            $order->delivery_at = now();
+            $order->delivery_date = now();
           }
           $order->save();
           return redirect::back();
@@ -252,8 +254,35 @@ class OrderController extends Controller
 
     public function payMail(Order $order)
     {
-        Mail::to($order->user)->send(new OrderPay($order,$order->items));
-        return 'mail enviado';
+      $flow = Flow::make('sandbox', [
+              'apiKey'    => '367F3C6A-DEB8-46F7-89E5-32CLED2236B9',
+              'secret'    => '65d9f9656b478aaa7be72267bc33f40747f47c94',
+          ]);
+
+          try {
+            $paymentResponse = $flow->payment()->commitByEmail([
+                'commerceOrder'     => $order->id,
+                'subject'           => 'order',
+                'amount'            => $order->amount,
+                'email'             => $order->user->email,
+                'urlConfirmation'   => url('/').'/flow/confirm',
+                'urlReturn'         => url('/').'/flow/return',
+                'optional'          => [
+                    'Message' => 'Tu orden esta en proceso!'
+                ]
+            ]);
+          }
+          catch ( Exception $e) {
+              //return $e->getMessage();
+              return Redirect::back()->withErrors(array('flow' => $e->getMessage()));
+          }
+
+          $order->flow_url = $paymentResponse->getUrl();
+          $order->status = 2;
+          $order->save();
+          Session::flash('success','Mail de cobro enviado a: '.$order->user->email);
+          return Redirect::back();
+
     }
 
 

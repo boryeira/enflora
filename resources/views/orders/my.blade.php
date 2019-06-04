@@ -8,9 +8,11 @@
         <div class="ibox ">
           <div class="ibox-head">
               <div class="ibox-title">Orden activa</div>
+              @if($activeOrder)
               <div class="ibox-tools">
                   <button class="btn btn-danger" data-toggle="dropdown"><i class="ti-trash"></i></button>
               </div>
+              @endif
           </div>
           <div class="ibox-body">
             @if($activeOrder)
@@ -62,7 +64,7 @@
               @endif
               @if($activeOrder->status[2]==2)
               <div class="ibox-footer bg-{{$activeOrder->status[1]}}">
-                <a href="{{route('order.payflow',['order'=>$activeOrder->id])}}" class="text-right btn btn-primary">Pagar orden</a><br /> <span class="mr-4" >
+                <a href="{{Url($activeOrder->flow_url)}}" class="text-right btn btn-primary">Pagar orden</a><br /> <span class="mr-4" >
                   Orden aceptada para realizar pago. Solo se aceptan pagos mediate la plataforma FLOW.CL
                 </apan>
               </div>
@@ -130,7 +132,7 @@
 @endsection
 
 @section('js')
-  <script>
+  {{-- <script>
     window.onload = function() {
       $(document).ready( function () {
         $('#datatable').DataTable({
@@ -155,5 +157,5 @@
       });
     };
 
-  </script>
+  </script> --}}
 @endsection
