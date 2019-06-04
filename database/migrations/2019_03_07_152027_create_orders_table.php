@@ -24,6 +24,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedInteger('status')->default(1);
             // $table->unsignedInteger('active')->default(1);
             $table->date('delivery_date')->nullable();
+            $table->string('flow_url')->nullable();
             $table->date('pay_date')->nullable();
           //  $table->integer('delivered');
             $table->timestamps();
