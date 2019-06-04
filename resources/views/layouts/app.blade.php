@@ -60,6 +60,8 @@
 <script src="{{ asset('js/metisMenu.min.js') }}" defer></script>
 <script src="{{ asset('js/datatables.min.js') }}" defer></script>
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 @yield('js')
 
 

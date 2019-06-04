@@ -98,12 +98,24 @@
                             <div class="modal-footer">
 
                               @if($order->status[2]==1)
-                                <a type="button" class="btn btn-danger" href="{{route('order.paymail',['order'=>$order->id])}}" >Enviar mail de pago</a>
+                                <a type="button" class="btn btn-primary" href="{{route('order.paymail',['order'=>$order->id])}}" >Enviar mail de pago</a>
+                                <form id="formeliminar{{$order->id}}" action="{{route('orders.destroy',['order'=>$order->id])}}" method="POST" >
+                                  {{ method_field('DELETE') }}
+                                  <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                                    <button class="btn btn-danger orderdelete"   type="submit" ><i class="ti-trash"></i>Eliminar</button>
+                                </form>
+                              @endif
+                              @if($order->status[2]==2)
+                                <form id="formeliminar{{$order->id}}" action="{{route('orders.destroy',['order'=>$order->id])}}" method="POST" >
+                                  {{ method_field('DELETE') }}
+                                  <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                                    <button class="btn btn-danger orderdelete"   type="submit" ><i class="ti-trash"></i>Eliminar</button>
+                                </form>
                               @endif
                               @if($order->status[2]==3)
                                 <a type="button" class="btn btn-success" href="{{route('order.status',['order'=>$order->id])}}?stage=4" >entregado</a>
                               @endif
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+
                             </div>
 
                           </div>
@@ -232,4 +244,27 @@
      </div>
      {{-- ordenes pasadas  --}}
 
+@endsection
+
+@section('js')
+  <script>
+    window.onload = function() {
+      $(document).ready( function () {
+        $('.orderdelete').click(function(e) {
+          e.preventDefault();
+          var form = $(this).parents('form');
+          swal("Seguro desea eliminar la orden?")
+          .then((value) => {
+            if(value){
+              form.submit();
+            }
+          });
+        });
+
+
+
+      });
+    };
+
+  </script>
 @endsection

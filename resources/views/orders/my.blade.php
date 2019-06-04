@@ -10,9 +10,15 @@
               <div class="ibox-title">Orden activa</div>
               @if($activeOrder)
               <div class="ibox-tools">
-                  <button class="btn btn-danger" data-toggle="dropdown"><i class="ti-trash"></i></button>
+
+                  <form id="formeliminar" action="{{route('orders.destroy',['order'=>$activeOrder->id])}}" method="POST" >
+                    {{ method_field('DELETE') }}
+                    <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                      <button class="btn btn-danger" id="eliminar"  type="submit" ><i class="ti-trash"></i></button>
+                  </form>
               </div>
               @endif
+
           </div>
           <div class="ibox-body">
             @if($activeOrder)
@@ -59,13 +65,13 @@
               </div>
               @if($activeOrder->status[2]==1)
               <div class="ibox-footer bg-{{$activeOrder->status[1]}}">
-                Orden pendiente en espera de aprobacion por parte del club. Al momento de ser aprovada sera informado via correo electronico.
+                Orden pendiente en espera de aprobacion por parte del club.<br /> Al momento de ser aprovada sera enviado un correo electronico de cobro.
               </div>
               @endif
               @if($activeOrder->status[2]==2)
               <div class="ibox-footer bg-{{$activeOrder->status[1]}}">
                 <a href="{{Url($activeOrder->flow_url)}}" class="text-right btn btn-primary">Pagar orden</a><br /> <span class="mr-4" >
-                  Orden aceptada para realizar pago. Solo se aceptan pagos mediate la plataforma FLOW.CL
+                  Orden aceptada para realizar pago. Solo se aceptan pago en linea.
                 </apan>
               </div>
               @endif
@@ -132,30 +138,23 @@
 @endsection
 
 @section('js')
-  {{-- <script>
+  <script>
     window.onload = function() {
       $(document).ready( function () {
-        $('#datatable').DataTable({
-            pageLength: 10,
-            fixedHeader: true,
-            responsive: true,
-            "sDom": 'rtip',
-            columnDefs: [{
-                targets: 'no-sort',
-                orderable: false
-            }]
+        $('#eliminar').click(function(e) {
+          e.preventDefault();
+          swal("Seguro desea eliminar la orden?")
+          .then((value) => {
+            if(value){
+              $( "#formeliminar" ).submit();
+            }
+          });
         });
 
-        // var table = $('#datatable').DataTable();
-        // $('#key-search').on('keyup', function() {
-        //     table.search(this.value).draw();
-        // });
-        // $('#type-filter').on('change', function() {
-        //     table.column(4).search($(this).val()).draw();
-        // });
+
 
       });
     };
 
-  </script> --}}
+  </script>
 @endsection

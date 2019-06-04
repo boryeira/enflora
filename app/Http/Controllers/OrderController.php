@@ -167,7 +167,10 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        Session::flash('success','Orden eliminada con Éxito');
+
+        return redirect::back();
     }
 
 
