@@ -291,8 +291,8 @@ class OrderController extends Controller
 
     public function mail()
     {
-
-      Mail::to(User::find(2))->send(new Welcome());
+      $user = User::find(2);
+      Mail::to($user)->send(new Welcome($user));
       return 'mail welcome';
     }
 
