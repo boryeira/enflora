@@ -10,6 +10,9 @@ use App\Http\Controllers\Controller;
 use App\Mail\Welcome;
 use Redirect;
 use Auth;
+use Exception;
+use Session;
+use Mail;
 
 class UserController extends Controller
 {
