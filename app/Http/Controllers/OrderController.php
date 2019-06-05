@@ -168,6 +168,12 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
+      foreach ($order->items as  $item) {
+        $lote = $item->lote;
+        $lote->consumed = $lote->consumed - $item->quantity;
+        $lote->save();
+        $item->delete();
+      }
         $order->delete();
         Session::flash('success','Orden eliminada con Éxito');
 
