@@ -291,7 +291,7 @@ class OrderController extends Controller
     public function mail()
     {
 
-      Mail::to(User::find(2))->from('info@enfloraclub.cl')->send(new OrderPay());
+      Mail::to(User::find(2))->send(new OrderPay());
       return 'mail';
     }
 

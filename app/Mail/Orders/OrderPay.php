@@ -33,7 +33,7 @@ class OrderPay extends Mailable
      */
     public function build()
     {
-      return $this->from('pago@enfloraclub.cl')
+      return $this->from('info@enfloraclub.cl')
                   ->view('mails.orders.pay');
     }
 }
