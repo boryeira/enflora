@@ -10,15 +10,13 @@
         <li class="{{Helper::navigation_selected('orders')}}" >
               <a href="{{route('orders.index')}}" aria-expanded="false"><i class="sidebar-item-icon ti-layout-grid3"></i>
                   <span class="nav-label">Ordenes</span><i class="fa fa-angle-left arrow"></i></a>
-              {{-- <ul class="nav-2-level collapse" aria-expanded="false" style="height: 0px;">
-                  <li>
-                      <a href="{{route('orders.index')}}">Todas</a>
-                  </li>
-                  <li>
-                      <a href="{{route('orders.create')}}">Nueva</a>
-                  </li>
 
-              </ul> --}}
+          </li>
+          <li>
+            <form class="form-info m-3" action="{{route('logout')}}" method="POST" >
+              <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+              <button class="d-flex align-items-center btn btn-danger btn-sm">Logout<i class="ti-shift-right ml-2 font-20"></i></button>
+            </form>
           </li>
           {{-- <li class="{{Helper::navigation_selected('strains')}}" >
                 <a href="{{route('orders.index')}}" aria-expanded="false"><i class="sidebar-item-icon ti-layout-grid3"></i>
