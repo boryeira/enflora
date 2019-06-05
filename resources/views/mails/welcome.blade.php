@@ -9,7 +9,7 @@
 
   </p>
   <p>
-    Usuario:{{$user->mail}}<br />
+    Usuario:{{$user->email}}<br />
     Contraseña: 3HDrSOvRIs
   </p>
   <a class="btn btn-primary btn-block" href="{{route('login')}}">Ingresa acá</a>
