@@ -10,7 +10,7 @@ use App\Models\Lote;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Mail\Orders\OrderPay;
-use App\Mail\Orders\Welcome;
+use App\Mail\Welcome;
 use Auth;
 use Redirect;
 use Exception;
