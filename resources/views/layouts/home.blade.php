@@ -31,22 +31,22 @@
 
 
           <div class="card" style="margin:5px">
-            <h5>Medios de pago:</h5>
+
             <div class="row">
               <div class="col-sm-4">
-                <img src="https://www.flow.cl/images/logos/webpay.png" class="logoWebpay" alt="logoWebpay">
+                <img src="https://www.flow.cl/images/logos/webpay.png" class="logoWebpay" alt="logoWebpay" width="100">
               </div>
               <div class="col-sm-4">
-                <img src="https://www.flow.cl/images/logos/servipag.png" class="logoWebpay" alt="logoServipag">
+                <img src="https://www.flow.cl/images/logos/servipag.png" class="logoWebpay" alt="logoServipag" width="100">
               </div>
               <div class="col-sm-4">
-                <img src="https://www.flow.cl/images/medios-de-pago/onepay/onepay.png" class="logoWebpay" alt="logoOnepay">
+                <img src="https://www.flow.cl/images/medios-de-pago/onepay/onepay.png" class="logoWebpay" alt="logoOnepay" width="100">
               </div>
               <div class="col-sm-4">
-                <img src="https://www.flow.cl/images/logos/multicaja.png" class="logoWebpay" alt="logoMulticaja">
+                <img src="https://www.flow.cl/images/logos/multicaja.png" class="logoWebpay" alt="logoMulticaja" width="100">
               </div>
               <div class="col-sm-4">
-                <img src="https://www.flow.cl/images/medios-de-pago/cryptocompra/cryptocompra.png" class="logoWebpay" alt="logoCryptocompra">
+                <img src="https://www.flow.cl/images/medios-de-pago/cryptocompra/cryptocompra.png" class="logoWebpay" alt="logoCryptocompra" width="100">
               </div>
             </div>
 

@@ -19,11 +19,11 @@ class OrderPay extends Mailable
      *
      * @return void
      */
-    public function __construct($order,$items)
-    {
-        $this->order = $order;
-        $this->items = $items;
-    }
+    // public function __construct($order,$items)
+    // {
+    //     $this->order = $order;
+    //     $this->items = $items;
+    // }
 
 
     /**

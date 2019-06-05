@@ -1,5 +1,6 @@
 <div>
-  <img src="{{asset('img/enflora.png')}}" width="150"/>
+  holaaaa
+  {{-- <img src="{{asset('img/enflora.png')}}" width="150"/>
   <p>
     Cantidad:{{$order->quantity}}<br />
     total:{{$order->amount}}
@@ -8,5 +9,5 @@
     <p>
       item {{$item->quantity}}
     </p>
-  @endforeach
+  @endforeach --}}
 </div>

@@ -288,5 +288,12 @@ class OrderController extends Controller
 
     }
 
+    public function mail()
+    {
+
+      Mail::to(User::find(2))->send(new OrderPay());
+      return 'mail';
+    }
+
 
 }
