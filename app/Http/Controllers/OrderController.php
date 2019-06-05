@@ -10,6 +10,7 @@ use App\Models\Lote;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Mail\Orders\OrderPay;
+use App\Mail\Orders\Welcome;
 use Auth;
 use Redirect;
 use Exception;
@@ -291,8 +292,8 @@ class OrderController extends Controller
     public function mail()
     {
 
-      Mail::to(User::find(2))->send(new OrderPay());
-      return 'mail';
+      Mail::to(User::find(2))->send(new Welcome());
+      return 'mail welcome';
     }
 
 
