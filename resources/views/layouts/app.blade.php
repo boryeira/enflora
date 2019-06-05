@@ -39,6 +39,21 @@
         <div class="content-wrapper">
             <div class="page-content">
               @include('layouts.alerts')
+              @if(Auth::user()->email_verified_at == null)
+                <form class="form-info" action="{{route('users.password.update')}}" method="POST" >
+                   <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                    <div class="alert alert-warning">
+                      Por seguridad debes cambiar contraseña<br />
+                      <div class="form-inline">
+
+                        <input type="password" class="form-control" name="password" placeholder="Nueva contraseña"/>
+                        <button class="btn btn-success btn-sm" type="submit">Actualizar</button>
+                      </div>
+
+                    </div>
+                </form>
+
+              @endif
               @yield('content')
             </div>
         </div>

@@ -13,6 +13,7 @@
 Route::get('/', 'HomeController@home')->name('home');
 Route::get('/form', 'HomeController@form')->name('form');
 Route::get('/mail', 'OrderController@mail')->name('mail');
+Route::post('/passwordupdate', 'Users\UserController@passwordUpdate')->name('users.password.update');
 
 Auth::routes();
 

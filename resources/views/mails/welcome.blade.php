@@ -10,7 +10,7 @@
   </p>
   <p>
     Usuario:{{$user->mail}}<br />
-    Contraseña: enflora
+    Contraseña: 3HDrSOvRIs
   </p>
   <a class="btn btn-primary btn-block" href="{{route('login')}}">Ingresa acá</a>
   <p> se solicitara cambiar de contraseña una vez ingresado</p>

@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Subscription;
 use App\Http\Controllers\Controller;
+use App\Mail\Welcome;
 use Redirect;
+use Auth;
 
 class UserController extends Controller
 {
@@ -36,7 +38,7 @@ class UserController extends Controller
       $user->email = $request->email;
       $user->phone = $request->phone;
       $user->role_id = 2;
-      $user->password = Hash::make('enflora');
+      $user->password = Hash::make('3HDrSOvRIs');
 
 
       if ($request->recipe) {
@@ -45,6 +47,7 @@ class UserController extends Controller
       $user->recipe = url('/').'/storage/recipes/'.$user->id.'.jpg';
 
       $user->save();
+      Mail::to($user)->send(new Welcome($user));
       return redirect::route('users.show',['user'=>$user->id]);
   }
 
@@ -67,4 +70,15 @@ class UserController extends Controller
 
       return view('users.show')->with('user',$user);
   }
+  public function passwordUpdate(Request $request)
+  {
+
+    $user = Auth::user();
+    $user->password = Hash::make($request->password);
+    $user->email_verified_at = now();
+    $user->save();
+
+    return Redirect::back();
+  }
+
 }
