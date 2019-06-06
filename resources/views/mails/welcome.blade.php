@@ -6,10 +6,12 @@
   </p>
   <p>
     Para activar tu membresía debes ingresar al siguiente link
-
   </p>
+    <a class="btn btn-primary btn-block" href="{{route('login')}}">Ingresa acá</a>
   <p>
-    Usuario:{{$user->email}}<br />
+    Con las siguientes credenciales.<br /><br />
+
+    Usuario: {{$user->email}}<br />
     Contraseña: 3HDrSOvRIs
   </p>
   <a class="btn btn-primary btn-block" href="{{route('login')}}">Ingresa acá</a>
