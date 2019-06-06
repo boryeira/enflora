@@ -8,7 +8,7 @@
         <div class="ibox ">
           <div class="ibox-head">
               <div class="ibox-title">Orden activa</div>
-              @if($activeOrder)
+              @if($activeOrder && ($activeOrder->status[2]==2))
               <div class="ibox-tools">
 
                   <form id="formeliminar" action="{{route('orders.destroy',['order'=>$activeOrder->id])}}" method="POST" >
@@ -23,26 +23,17 @@
           <div class="ibox-body">
             @if($activeOrder)
               <div class="row">
-
-                <div class="col-12 col-md-6 well">
-                  <h5 class="font-strong">Detalles</h5>
-                  Estado pedido :  <span class="badge badge-{{$activeOrder->status[1]}} ">{{$activeOrder->status[0]}}</span><br />
-                  Gramos totales :  <span class=" ">{{$activeOrder->quantity}}</span><br />
-                  Total a pagar :  <span class=" ">{{$activeOrder->quantity}}</span><br />
-                  <br />
-                  <br />
-                </div>
                 <div class="col-12 col-md-6">
                   <h5 class="font-strong">Variedades</h5>
                   <ul class="media-list media-list-divider">
                     @foreach ($activeOrder->items as  $item)
                       <li class="media">
                         <a class="media-img" href="javascript:;">
-                            <img src="{{$item->lote->img}}" alt="image" width="100">
+                            <img src="{{$item->lote->img}}" alt="image" width="80">
                         </a>
 
                           <div class="media-body d-flex row">
-                              <div class="flex-1 col-md-6 ">
+                              <div class="flex-1 col-md-12 ">
                                   <div class="media-heading">
                                     {{$item->lote->strain->name}}
                                   </div>
@@ -53,26 +44,52 @@
                                       </span>
 
                                   </div>
+                                  <div class="text-mute">
+                                    <span class="mr-4">Cantidad: {{$item->quantity}}
+
+                                    </span>
+
+                                  </div>
+
+
                               </div>
-                              <div class="text-right col-md-6" >
-                                <h4 class="font-strong float-right text-right">{{$item->quantity}}<sub>gs</sub></h4>
-                              </div>
+
                           </div>
                       </li>
                     @endforeach
                   </ul>
                 </div>
+                <div class="col-12 col-md-6 well">
+                  <h5 class="font-strong">Detalle</h5>
+                  <h5>Estado pedido:  <span class="text-mute badge badge-{{$activeOrder->status[1]}} ">{{$activeOrder->status[0]}}</span></h5>
+                  <h5>Gramos totales:   <span class=" badge badge-{{$activeOrder->status[1]}}">{{$activeOrder->quantity}}</span></h5>
+                  <br />
+                  <br />
+                </div>
               </div>
-              @if($activeOrder->status[2]==1)
-              <div class="ibox-footer bg-{{$activeOrder->status[1]}}">
-                Orden pendiente en espera de aprobacion por parte del club.<br /> Al momento de ser aprovada sera enviado un correo electronico de cobro.
-              </div>
-              @endif
+
               @if($activeOrder->status[2]==2)
-              <div class="ibox-footer bg-{{$activeOrder->status[1]}}">
-                <a href="{{Url($activeOrder->flow_url)}}" class="text-right btn btn-primary">Pagar orden</a><br /> <span class="mr-4" >
-                  Orden aceptada para realizar pago. Solo se aceptan pago en linea.
-                </apan>
+              <div class="ibox-footer text-center" >
+                <h4>Total a pagar:   <span class=" font-strong  ">{{number_format($activeOrder->amount,0, ',', '.')}}</span></h4>
+
+                <a href="{{route('order.payflow',[$activeOrder->id])}}" class="text-right btn btn-primary btn-lg m-6">PAGAR ORDEN</a><br />
+                <div class="row " style="margin-top:20px;" >
+                  <div class="col-4">
+                    <img src="https://www.flow.cl/images/logos/webpay.png" class="logoWebpay" alt="logoWebpay" width="100">
+                  </div>
+                  <div class="col-4">
+                    <img src="https://www.flow.cl/images/logos/servipag.png" class="logoWebpay" alt="logoServipag" width="100">
+                  </div>
+                  <div class="col-4">
+                    <img src="https://www.flow.cl/images/medios-de-pago/onepay/onepay.png" class="logoWebpay" alt="logoOnepay" width="100">
+                  </div>
+                  <div class="col-4">
+                    <img src="https://www.flow.cl/images/logos/multicaja.png" class="logoWebpay" alt="logoMulticaja" width="100">
+                  </div>
+                  <div class="col-4">
+                    <img src="https://www.flow.cl/images/medios-de-pago/cryptocompra/cryptocompra.png" class="logoWebpay" alt="logoCryptocompra" width="100">
+                  </div>
+                </div>
               </div>
               @endif
               @if($activeOrder->status[2]==3)
