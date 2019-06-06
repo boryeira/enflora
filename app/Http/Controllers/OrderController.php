@@ -105,7 +105,7 @@ class OrderController extends Controller
           $item->lote_id = $lote->id;
           $item->quantity = $q;
           $item->amount = $lote->price*$q;
-          $item->status = 1;
+          $item->status = 2;
           $item->save();
           $lote->consumed = $lote->consumed + $q;
           $lote->save();
