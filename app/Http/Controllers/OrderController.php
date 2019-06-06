@@ -94,6 +94,7 @@ class OrderController extends Controller
       $order = new Order;
       $order->user_id = $user->id;
       $order->quantity = array_sum($items);
+      $order->status = 2;
       $order->save();
 
       foreach ($items as $key => $q) {
