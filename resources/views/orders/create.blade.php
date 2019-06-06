@@ -33,9 +33,11 @@
               </div>
 
               <div class="card-body">
+                <div class="text-primary"><i class="ti-location-pin mr-2"></i>Curicó</div>
                   <h4 class="card-title mb-1">{{$lote->strain->name}}</h4>
                   <div class="text-primary">Cosechada: {{$lote->harvested_at}}</div>
-                  <div class="text-primary"><i class="ti-location-pin mr-2"></i>Curicó</div>
+
+                  <div class="text-strong">{{number_format($lote->price,0, ',', '.')}} el g</div>
                   {{-- <p class="mt-4 mb-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --}}
                   <br/>
 
