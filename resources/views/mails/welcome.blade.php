@@ -4,17 +4,14 @@
   <p>
     Has sido seleccionado para los nuevos cupos de membresía.
   </p>
-  <p>
-    Para activar tu membresía debes ingresar al siguiente link
-  </p>
+
     <a class="btn btn-primary btn-block" href="{{route('login')}}">Ingresa acá</a>
   <p>
-    Con las siguientes credenciales.<br /><br />
+    Activa tu membresía con las siguientes credenciales.<br /><br />
 
     Usuario: {{$user->email}}<br />
     Contraseña: 3HDrSOvRIs
   </p>
-  <a class="btn btn-primary btn-block" href="{{route('login')}}">Ingresa acá</a>
   <p> se solicitara cambiar de contraseña una vez ingresado</p>
 
 </div>
