@@ -102,7 +102,7 @@
                     <table class="table table-hover" id="datatable">
                         <thead class="thead-default ">
                             <tr>
-                                <th>Order ID</th>
+
                                 <th>Gramos</th>
                                 <th>Total</th>
                                 <th>Fecha entrega</th>
@@ -112,9 +112,7 @@
                         <tbody>
                           @foreach($oldOrders as $order)
                             <tr>
-                                <td>
-                                  <a href="javascript:;">#{{$order->id}}</a>
-                                </td>
+
                                 <td>
                                   {{$order->quantity}}
                                 </td>
