@@ -40,6 +40,7 @@
                   <br/>
 
                   <div class="card-footer text-muted">
+                    <label>Cantidad</label>
                     <input class="form-control orderInput" name="{{$lote->code}}" style="heigth:50%" value="0" type="number" data-price="{{$lote->price}}">
 
                   </div>
