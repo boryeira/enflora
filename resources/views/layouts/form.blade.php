@@ -8,9 +8,9 @@
           <a href="/"><img src="{{asset('img/enflora.png')}}" width="450" style="margin-bottom:50px;margin-top:50px;"/></a>
           <p class="text-light">Formulario de pre registro</p>
           <div class="alert alert-info">
-          <p> IMPORTANTE: Este formulario es solo un pre-registro y no garantiza activación inmediata o membresía.
+          <p> <strong class="text-strong"> IMPORTANTE: </strong> Este formulario es solo un pre-registro y no garantiza activación inmediata o membresía.
              Nuestro equipo validara la información y se comunicara con usted vía correo electrónico cuando existan cupos disponibles para su activación.   </p>
-             <p>Importante que ingrese un correo electrónico valido. </p>
+             <p><strong class="text-strong">Importante que ingrese un correo electrónico valido.</strong> </p>
           </div>
          
           <div class="card" style="background-color: #fff0;">
