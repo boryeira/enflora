@@ -10,4 +10,8 @@ class OrderItem extends Model
   {
       return $this->belongsTo('App\Models\Lote');
   }
+  public function order()
+  {
+      return $this->belongsTo('App\Models\Order');
+  }
 }

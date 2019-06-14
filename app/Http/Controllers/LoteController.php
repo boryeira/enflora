@@ -80,7 +80,7 @@ class LoteController extends Controller
      */
     public function show(Lote $lote)
     {
-          return view('lotes.show');
+          return view('lotes.show')->with('lote',$lote);
     }
 
     /**

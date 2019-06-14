@@ -40,7 +40,7 @@
                                 <td>
                                     <span class="badge badge-{{$order->status[1]}} ">{{$order->status[0]}}</span>
                                 </td>
-{{--
+                              {{--
                                 <td>{{$order->delivered_at || '--'}}</td> --}}
                                 <td>
                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal{{$order->id}}"><i class="fa fa-info"></i></button>

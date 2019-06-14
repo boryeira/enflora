@@ -9,6 +9,15 @@ class Lote extends Model
   
   protected $with = array('strain');
 
+  public function getStatusAttribute($value)
+  {
+    $rawStatus = [
+      '1'=> ['activo','success','1'],
+      '2'=> ['consumido','secondary','2'],
+    ];
+    return $rawStatus[$value];
+  }
+
   public function strain()
   {
       return $this->belongsTo('App\Models\Strain');
@@ -18,4 +27,11 @@ class Lote extends Model
   {
       return $this->where('status',1)->get();
   }
+
+  public function orderItems()
+  {
+    return $this->hasMany('App\Models\OrderItem');
+  }
+
+
 }
