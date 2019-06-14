@@ -11,7 +11,7 @@
           <div class="card" style="margin:5px">
             <a class="btn btn-primary" href="{{route('login')}}">Ingresar</a>
             <br>
-            <a class="btn btn-info" href="{{route('form')}}">Formulario Pre-registro</a>
+            <a class="btn btn-info" href="https://docs.google.com/forms/d/e/1FAIpQLSfYw_F-vQ2W7Kc4yviJOS2nuR0cfmEgNGv3HMN8r_6Hp_JXyw/viewform?embedded=true">Formulario Pre-registro</a>
 
           </div>
 
