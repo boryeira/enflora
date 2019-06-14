@@ -12,8 +12,8 @@ class Order extends Model
   public function getStatusAttribute($value)
   {
     $rawStatus = [
-      '1'=> ['Pendiente','secondary','1'],
-      '2'=> ['Confirmado','info','2'],
+      '1'=> ['error','danger','1'],
+      '2'=> ['Pendiente','secondary','2'],
       '3'=> ['Pagado','success','3'],
       '4'=> ['Entregado','primary','4']
     ];
