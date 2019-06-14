@@ -33,7 +33,7 @@
                         <div class="media-body d-flex align-items-center">
                             <div class="flex-1">
                                 <div class="media-heading">Gramos</div>
-                                <div class="text-muted">{{$lote->consumed}}/ {{$lote->quantity}}</div>
+                                <div class="text-muted">{{($lote->quantity)-($lote->consumed)}}/ {{$lote->quantity}}</div>
                             </div>
                            
                         </div>
