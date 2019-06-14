@@ -71,6 +71,123 @@
         </div>
       </div>
       <div class="col-md-9" >
+        <div class="ibox">
+          <div class="ibox-body">
+              <div class="table-responsive row">
+                  <table class="table table-bordered table-hover" id="datatable">
+                      <thead class="thead-default thead-lg">
+                          <tr>
+                              <th>Order ID</th>
+        
+                              <th>Gramos</th>
+                              <th>Total</th>
+                              <th>Estado</th>
+                              <th class="no-sort" width="5%"></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        @foreach($user->orders as $order)
+                          <tr>
+                              <td>
+                                <a href="javascript:;">#{{$order->id}}</a>
+                              </td>
+        
+                              <td>
+                                {{$order->quantity}}g
+                              </td>
+                              <td>
+                                ${{$order->amount}}
+                              </td>
+                              <td>
+                                  <span class="badge badge-{{$order->status[1]}} ">{{$order->status[0]}}</span>
+                              </td>
+                                  {{--
+                              <td>{{$order->delivered_at || '--'}}</td> --}}
+                              <td>
+                                  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal{{$order->id}}"><i class="fa fa-info"></i></button>
+                              </td>
+                          </tr>
+                          <!-- The Modal -->
+        
+        
+                        @endforeach
+        
+                      </tbody>
+                  </table>
+                  @foreach($user->orders  as $order)
+                    <div class="modal" id="myModal{{$order->id}}">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+        
+                          <!-- Modal Header -->
+                          <div class="modal-header">
+                            <h4 class="modal-title">Detalle orden</strong> </h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          </div>
+        
+                          <!-- Modal body -->
+                          <div class="modal-body">
+                            <table class="table table-bordered table-hover" id="datatable">
+                                <thead class="thead-default thead-lg">
+                                    <tr>
+                                        <th>Lote</th>
+                                        <th>Variedad</th>
+                                        <th>Gramos</th>
+                                    </tr>
+                                </thead>
+                                <tbody >
+                                  @foreach ($order->items as $key => $item)
+                                    <tr>
+                                      <td>
+                                        {{$item->lote->code}}
+                                      </td>
+                                      <td>
+                                        {{$item->lote->strain->name}}
+                                      </td>
+                                      <td>
+                                        {{$item->quantity}}
+                                      </td>
+                                    </tr>
+                                  @endforeach
+        
+                                </tbody>
+                            </table>
+        
+                          </div>
+        
+                          <!-- Modal footer -->
+                          <div class="modal-footer">
+        
+                            @if($order->status[2]==1)
+                              <a type="button" class="btn btn-primary" href="{{route('order.paymail',['order'=>$order->id])}}" >Enviar mail de pago</a>
+                              <form id="formeliminar{{$order->id}}" action="{{route('orders.destroy',['order'=>$order->id])}}" method="POST" >
+                                {{ method_field('DELETE') }}
+                                <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                                  <button class="btn btn-danger orderdelete"   type="submit" ><i class="ti-trash"></i>Eliminar</button>
+                              </form>
+                            @endif
+                            @if($order->status[2]==2)
+                              <form id="formeliminar{{$order->id}}" action="{{route('orders.destroy',['order'=>$order->id])}}" method="POST" >
+                                {{ method_field('DELETE') }}
+                                <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                                  <button class="btn btn-danger orderdelete"   type="submit" ><i class="ti-trash"></i>Eliminar</button>
+                              </form>
+                            @endif
+                            @if($order->status[2]==3)
+                              <a type="button" class="btn btn-success" href="{{route('order.status',['order'=>$order->id])}}?stage=4" >entregado</a>
+                            @endif
+        
+                          </div>
+        
+                        </div>
+                      </div>
+                    </div>
+                  @endforeach
+        
+                </div>
+          </div>
+        </div>
+
 
       </div>
   </div>

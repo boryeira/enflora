@@ -57,7 +57,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Order')->where('status',4);
     }
 
-
+    public function orders()
+    {
+        return $this->hasMany('App\Models\Order');
+    }
 
     //getters
     public function getFullNameAttribute()
