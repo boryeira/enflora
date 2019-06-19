@@ -29,6 +29,6 @@ class Welcome extends Mailable
      */
     public function build()
     {
-        return $this->from('info@enfloraclub.cl')->subject('Activación de membresía')->view('mails.welcome');
+        return $this->from('info@enfloraclub.cl')->subject('Activación de membresía enFloraclub')->view('mails.welcome');
     }
 }

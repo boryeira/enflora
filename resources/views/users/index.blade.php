@@ -18,17 +18,16 @@
                     <thead>
                         <tr>
                             <th>Nombre</th>
-                            <th>Apellido</th>
                             <th>Rut</th>
                             <th>Email</th>
+
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                       @foreach ($users as $user)
                         <tr>
-                            <td>{{$user->first_name}}</td>
-                            <td>{{$user->last_name}}</td>
+                            <td>{{$user->first_name}} {{$user->last_name}}</td>
                             <td>{{$user->rut}}</td>
                             <td>{{$user->email}}</td>
                             <td>

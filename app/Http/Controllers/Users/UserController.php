@@ -34,6 +34,8 @@ class UserController extends Controller
 
   public function store(Request $request)
   {
+      $provisional = Str::random(8);
+
       $user = new User();
       $user->first_name = $request->first_name;
       $user->last_name = $request->last_name;
@@ -41,14 +43,16 @@ class UserController extends Controller
       $user->email = $request->email;
       $user->phone = $request->phone;
       $user->role_id = 2;
-      $user->password = Hash::make('3HDrSOvRIs');
+      $user->password = Hash::make($provisional);
+      $user->provisional = $provisional;
 
 
       if ($request->recipe) {
           request()->file('recipe')->storeAs('public/recipes', $user->id.'.jpg');
+          $user->recipe = url('/').'/storage/recipes/'.$user->id.'.jpg';
       }
-      $user->recipe = url('/').'/storage/recipes/'.$user->id.'.jpg';
-
+      
+    
       $user->save();
       Mail::to($user)->send(new Welcome($user));
       return redirect::route('users.show',['user'=>$user->id]);
