@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Subscription;
 use App\Http\Controllers\Controller;
 use App\Mail\Welcome;
+use Illuminate\Support\Str;
 use Redirect;
 use Auth;
 use Exception;
