@@ -129,7 +129,7 @@ class LoteController extends Controller
   
           //$image->storeAs('public/lotes', $lote->id.'.jpg');
           //File::delete('public/lotes/'.$lote->id.'.jpg');
-          $storage = Storage::put('public/lotes/'.$lote->id.'.jpg', $resize);
+          $storage = Storage::put('/public/lotes/'.$lote->id.'.jpg', $resize);
           $lote->img = url('/').'/storage/lotes/'.$lote->id.'.jpg';
           $lote->save();
         } 
