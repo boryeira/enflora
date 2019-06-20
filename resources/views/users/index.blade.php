@@ -20,6 +20,7 @@
                             <th>Nombre</th>
                             <th>Rut</th>
                             <th>Email</th>
+                            <th>Receta</th>
 
                             <th></th>
                         </tr>
@@ -30,6 +31,7 @@
                             <td>{{$user->first_name}} {{$user->last_name}}</td>
                             <td>{{$user->rut}}</td>
                             <td>{{$user->email}}</td>
+                            <td>@if($user->recipe)tiene @else no tiene @endif </td>
                             <td>
                               {{-- <a class="btn btn-info btn-icon-only btn-sm btn-air" href="{{route('orders.create',['user'=>$user->id])}}"><i class="ti-plus"></i></a> --}}
                               <a class="btn btn-primary btn-icon-only btn-sm btn-air" href="{{route('users.show',['user'=>$user->id])}}"><i class="ti-eye"></i></a>

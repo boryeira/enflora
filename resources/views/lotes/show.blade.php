@@ -7,9 +7,10 @@
         <div class="ibox ibox-fullheight">
             <div class="ibox-head">
                 <div class="ibox-title">Lote # {{$lote->id}}    </div>
-                <div class="tools"><span class="badge badge-{{$lote->status[1]}}">{{$lote->status[0]}}</span></div>
+                <div class="tools"><a class="btn btn-info" href="{{route('lotes.edit',['lote'=>$lote->id])}}">Editar</a></div>
             </div>
             <div class="ibox-body">
+                    <span class="badge badge-{{$lote->status[1]}}">{{$lote->status[0]}}</span>
                 <ul class="media-list media-list-divider mr-2 scroller" data-height="580px" style="overflow: hidden; width: auto; height: 580px;">
                     <li class="media align-items-center">
                         <div class="media-body d-flex align-items-center">
@@ -43,6 +44,14 @@
                             <div class="flex-1">
                                 <div class="media-heading">Total vendido</div>
                                 <div class="text-muted">${{number_format($lote->orderItems()->sum('amount'),0, ',', '.')}} </div>
+                            </div>
+                           
+                        </div>
+                    </li>
+                    <li class="media align-items-center">
+                        <div class="media-body d-flex align-items-center">
+                            <div class="flex-1">
+                            <img src="{{$lote->img}}">
                             </div>
                            
                         </div>

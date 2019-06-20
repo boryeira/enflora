@@ -69,9 +69,9 @@
                             <td>{{($lote->quantity)-($lote->consumed)}}/{{$lote->quantity}}</td>
                             <td>{{$lote->storage_at}}</td>
                             <td>
-                              <a href="{{route('lotes.show',['lote'=>$lote->id])}}" class="btn btn-primary btn-icon-only btn-sm btn-air"><i class="ti-eye"></i></a>
-                              <a class="btn btn-info btn-icon-only btn-sm btn-air"><i class="ti-plus"></i></a>
-                              <a class="btn btn-danger btn-icon-only btn-sm btn-air"><i class="ti-trash"></i></a>
+                                <a href="{{route('lotes.show',['lote'=>$lote->id])}}" class="btn btn-primary btn-icon-only btn-sm btn-air"><i class="ti-eye"></i></a>
+                                <a class="btn btn-info btn-icon-only btn-sm btn-air" href="{{route('lotes.edit',['lote'=>$lote->id])}}"><i class="ti-pencil"></i></a>
+                                <a class="btn btn-danger btn-icon-only btn-sm btn-air"><i class="ti-trash"></i></a>
                             </td>
                         </tr>
                       @endforeach
