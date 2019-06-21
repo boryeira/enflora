@@ -19,3 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::get('/batches','LoteController@batches');
+
+Route::post('/flow/create', 'FlowController@createPayment');
+
+Route::get('/flow/confirm', 'FlowController@confirm');
+
+Route::get('/flow/return', 'FlowController@return');

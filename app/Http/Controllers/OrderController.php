@@ -214,7 +214,7 @@ class OrderController extends Controller
           try {
             $paymentResponse = $flow->payment()->commit([
                 'commerceOrder'     => $order->id,
-                'subject'           => 'order',
+                'subject'           => 'Membresía',
                 'amount'            => $order->amount,
                 'email'             => $order->user->email,
                 'urlConfirmation'   => url('/').'/flow/confirm',
@@ -230,7 +230,7 @@ class OrderController extends Controller
           }
 
 
-
+        //  dd($paymentResponse->getUrl());
       return Redirect::to($paymentResponse->getUrl());
     }
 
@@ -276,7 +276,7 @@ class OrderController extends Controller
           try {
             $paymentResponse = $flow->payment()->commitByEmail([
                 'commerceOrder'     => $order->id,
-                'subject'           => 'order',
+                'subject'           => 'Membresía',
                 'amount'            => $order->amount,
                 'email'             => $order->user->email,
                 'urlConfirmation'   => url('/').'/flow/confirm',
