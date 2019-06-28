@@ -116,6 +116,11 @@
                               @endif
                               @if($order->status[2]==3)
                                 <a type="button" class="btn btn-success" href="{{route('orders.status',['order'=>$order->id])}}?stage=4" >Entregado</a>
+                                <form id="formeliminar{{$order->id}}" action="{{route('orders.destroy',['order'=>$order->id])}}" method="POST" >
+                                  {{ method_field('DELETE') }}
+                                  <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+                                    <button class="btn btn-danger orderdelete"   type="submit" ><i class="ti-trash"></i>Eliminar</button>
+                                </form>
                               @endif
 
                             </div>
