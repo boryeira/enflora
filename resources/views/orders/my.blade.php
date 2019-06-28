@@ -72,7 +72,7 @@
               <div class="ibox-footer text-center" >
                 <h4>Total a pagar:   <span class=" font-strong  ">{{number_format($activeOrder->amount,0, ',', '.')}}</span></h4>
 
-                <a href="{{route('order.payflow',[$activeOrder->id])}}" class="text-right btn btn-primary btn-lg m-6">PAGAR ORDEN</a><br />
+                <a href="{{route('orders.payflow',[$activeOrder->id])}}" class="text-right btn btn-primary btn-lg m-6">PAGAR ORDEN</a><br />
                 <div class="row " style="margin-top:20px;" >
                   <div class="col-4">
                     <img src="https://www.flow.cl/images/logos/webpay.png" class="logoWebpay" alt="logoWebpay" width="100">

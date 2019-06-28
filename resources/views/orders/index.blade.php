@@ -98,7 +98,7 @@
                             <div class="modal-footer">
 
                               @if($order->status[2]==1)
-                                <a type="button" class="btn btn-primary" href="{{route('order.paymail',['order'=>$order->id])}}" >Enviar mail de pago</a>
+                                
                                 <form id="formeliminar{{$order->id}}" action="{{route('orders.destroy',['order'=>$order->id])}}" method="POST" >
                                   {{ method_field('DELETE') }}
                                   <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
@@ -106,6 +106,8 @@
                                 </form>
                               @endif
                               @if($order->status[2]==2)
+                                <a type="button" class="btn btn-success" href="{{route('orders.status',['order'=>$order->id])}}?stage=3" >Pagado</a>
+
                                 <form id="formeliminar{{$order->id}}" action="{{route('orders.destroy',['order'=>$order->id])}}" method="POST" >
                                   {{ method_field('DELETE') }}
                                   <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
@@ -113,7 +115,7 @@
                                 </form>
                               @endif
                               @if($order->status[2]==3)
-                                <a type="button" class="btn btn-success" href="{{route('order.status',['order'=>$order->id])}}?stage=4" >entregado</a>
+                                <a type="button" class="btn btn-success" href="{{route('orders.status',['order'=>$order->id])}}?stage=4" >Entregado</a>
                               @endif
 
                             </div>

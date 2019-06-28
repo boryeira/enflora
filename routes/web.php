@@ -20,10 +20,11 @@ Auth::routes();
 Route::resource('/lotes', 'LoteController');
 Route::resource('/users', 'Users\UserController');
 Route::resource('/orders', 'OrderController');
-Route::get('/orders/{order}/status', 'OrderController@status')->name('order.status');
-Route::get('/orders/{order}/mailpay', 'OrderController@payMail')->name('order.paymail');
-Route::get('/orders/{order}/payflow', 'OrderController@payFlow')->name('order.payflow');
-Route::post('/flow/return', 'OrderController@returnFlow')->name('order.returnflow');
+Route::get('/orders/{order}/status', 'OrderController@status')->name('orders.status');
+Route::get('/orders/{order}/mailpay', 'OrderController@payMail')->name('orders.paymail');
+Route::get('/orders/{order}/payflow', 'OrderController@payFlow')->name('orders.payflow');
+Route::post('/orders/{order}/paid', 'OrderController@paid')->name('orders.paid');
+Route::post('/flow/return', 'OrderController@returnFlow')->name('orders.returnflow');
 
 
 
