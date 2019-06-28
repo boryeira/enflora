@@ -25,7 +25,7 @@ Route::get('/orders/{order}/mailpay', 'OrderController@payMail')->name('orders.p
 Route::get('/orders/{order}/payflow', 'OrderController@payFlow')->name('orders.payflow');
 Route::post('/orders/{order}/paid', 'OrderController@paid')->name('orders.paid');
 Route::post('/flow/return', 'OrderController@returnFlow')->name('orders.returnflow');
-Route::get('/flow/confirm', 'OrderController@confirmFlow')->name('orders.confirmflow');
+Route::post('/flow/confirm', 'OrderController@confirmFlow')->name('orders.confirmflow');
 
 
 //Route::get('/subscriptions', 'Users\SubscriptionController@all')->name('subscriptions.all');
