@@ -12,10 +12,10 @@ use File;
 
 class LoteController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -26,12 +26,7 @@ class LoteController extends Controller
         $lotes = Lote::orderBy('created_at', 'desc')->get();
         return view('lotes.index')->with('lotes',$lotes);
     }
-    public function batches()
-    {
-      $lotes = Lote::all();
-      $batches = $lotes->toArray();
-      return response()->json($batches);
-    }
+
 
     /**
      * Show the form for creating a new resource.
