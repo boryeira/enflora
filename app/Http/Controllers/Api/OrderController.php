@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use DarkGhostHunter\FlowSdk\Flow;
 use App\Models\Order;
 use App\Models\Lote as Batch;
 use App\Models\OrderItem;
@@ -77,7 +78,7 @@ class OrderController extends ApiController
 
           try {
             $paymentResponse = $flow->payment()->commit([
-                'commerceOrder'     => random_int(1000,9000),
+                'commerceOrder'     => (string)random_int(1000,9000),
                 'subject'           => 'Membresía',
                 'amount'            => $order->amount,
                 'email'             => $order->user->email,
