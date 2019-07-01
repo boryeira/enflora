@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Transformers\BatchTransformer;
 
 class Lote extends Model
 {
+  public $transformer = BatchTransformer::class;
   
   protected $with = array('strain');
 

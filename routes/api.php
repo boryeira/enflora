@@ -14,10 +14,14 @@ use Illuminate\Http\Request;
 */
 
 
-Route::get('/products','Api\ProductController@index');
+//Route::get('/products','Api\ProductController@index');
 
-// Route::post('/flow/create', 'FlowController@createPayment');
+Route::Apiresource('orders', 'Api\OrderController', [
+    'as' => 'api'
+]);
+Route::get('/orders/{order}/items','Api\OrderController@items')->name('api.orders.items');
 
-// Route::get('/flow/confirm', 'FlowController@confirm');
 
-// Route::get('/flow/return', 'FlowController@return');
+Route::Apiresource('batches', 'Api\BatchController', [
+    'as' => 'api'
+]);

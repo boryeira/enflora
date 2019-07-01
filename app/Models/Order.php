@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Transformers\OrderTransformer;
 
 class Order extends Model
 {
+  public $transformer = OrderTransformer::class;
   protected $dates = [
       'delivery_date','pay_date'
   ];
