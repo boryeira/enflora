@@ -109,6 +109,11 @@ class OrderController extends Controller
           $item->status = 1;
           $item->save();
           $batch->consumed = $batch->consumed + $q;
+          $diference = $batch->quantity - $batch->consumed;
+          if($diference<=10)
+          {
+            $batch->status = 2;
+          }
           $batch->save();
         }
       }
