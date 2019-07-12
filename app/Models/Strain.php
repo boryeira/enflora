@@ -8,11 +8,11 @@ class Strain extends Model
 {
   public function lotes()
   {
-      return $this->hasMany('App\Models\Lote');
+      return $this->hasMany('App\Models\Batch');
   }
 
   public function lotesActive()
   {
-      return $this->hasOne('App\Models\Lote')->where('status',1);
+      return $this->hasOne('App\Models\Batch')->where('status',1);
   }
 }

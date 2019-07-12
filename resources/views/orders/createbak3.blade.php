@@ -21,10 +21,10 @@
 
                 <ul class="media-list media-list-divider">
                   @foreach (App\Models\Strain::all() as $strain)
-                    @if($strain->lotesActive)
+                    @if($strain->batchesActive)
                     <li class="media">
                         <a class="media-img " >
-                            <img src="{{$strain->lotesActive->img}}" alt="image" width="120">
+                            <img src="{{$strain->batchesActive->img}}" alt="image" width="120">
                         </a>
                         <div class="media-body d-flex row">
                             <div class="flex-1 col-md-6 ">
@@ -34,7 +34,7 @@
                                 <p class="font-13 text-light">Cillum in incididunt reprehenderit qui reprehenderit nulla ut sint</p>
                                 <div class="font-13">
                                     <span class="mr-4">Cosechada:
-                                        <a class="text-success" href="javascript:;">{{$strain->lotesActive->harvested_at}}</a>
+                                        <a class="text-success" href="javascript:;">{{$strain->batchesActive->harvested_at}}</a>
                                     </span>
 
                                 </div>
@@ -42,7 +42,7 @@
                             <div class="text-right col-md-6" >
 
                                 <div class="form-group">
-                                  <input name="{{$strain->lotesActive->code}}" style="heigth:100%" value="0">
+                                  <input name="{{$strain->batchesActive->code}}" style="heigth:100%" value="0">
                                   <span class="mb-1 font-strong text-primary">cuantos gs</span>
                                 </div>
 
@@ -82,8 +82,8 @@
 
     $( document ).ready(function() {
       @foreach (App\Models\Strain::all() as $strain)
-        @if($strain->lotesActive)
-        $("input[name='{!!$strain->lotesActive->code!!}']").TouchSpin({
+        @if($strain->batchesActive)
+        $("input[name='{!!$strain->batchesActive->code!!}']").TouchSpin({
             buttondown_class: 'btn btn-secondary ',
             buttonup_class: 'btn btn-secondary ',
             min: 0,

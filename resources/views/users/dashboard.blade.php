@@ -13,15 +13,15 @@
     </div>
     <div class="col-lg-8">
       <div class="row">
-        @foreach ($lotes as $lote)
+        @foreach ($batches as $batch)
         <div class="col-sm-12 col-md-6 col-lx-4 ">
           <div class="card card-air text-center centered mb-4" style="max-width:320px;">
                 <div class="card-body">
                     <div class="card-avatar mt-3 mb-4">
-                        <img class="img-circle" src="{{$lote->img}}" alt="image">
+                        <img class="img-circle" src="{{$batch->img}}" alt="image">
                     </div>
-                    <h4 class="card-title mb-1">{{$lote->strain->name}}</h4>
-                    <div class="text-primary">Cosechada: {{$lote->harvested_at}}</div>
+                    <h4 class="card-title mb-1">{{$batch->strain->name}}</h4>
+                    <div class="text-primary">Cosechada: {{$batch->harvested_at}}</div>
                     <div class="text-primary"><i class="ti-location-pin mr-2"></i>Curicó</div>
                     {{-- <p class="mt-4 mb-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --}}
 

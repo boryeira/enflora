@@ -130,7 +130,7 @@
                             <table class="table table-bordered table-hover" id="datatable">
                                 <thead class="thead-default thead-lg">
                                     <tr>
-                                        <th>Lote</th>
+                                        <th>batch</th>
                                         <th>Variedad</th>
                                         <th>Gramos</th>
                                     </tr>
@@ -139,10 +139,10 @@
                                   @foreach ($order->items as $key => $item)
                                     <tr>
                                       <td>
-                                        {{$item->lote->code}}
+                                        {{$item->batch->code}}
                                       </td>
                                       <td>
-                                        {{$item->lote->strain->name}}
+                                        {{$item->batch->strain->name}}
                                       </td>
                                       <td>
                                         {{$item->quantity}}

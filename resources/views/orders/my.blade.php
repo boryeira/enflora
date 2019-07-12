@@ -29,17 +29,17 @@
                     @foreach ($activeOrder->items as  $item)
                       <li class="media">
                         <a class="media-img" href="javascript:;">
-                            <img src="{{$item->lote->img}}" alt="image" width="80">
+                            <img src="{{$item->batch->img}}" alt="image" width="80">
                         </a>
 
                           <div class="media-body d-flex row">
                               <div class="flex-1 col-md-12 ">
                                   <div class="media-heading">
-                                    {{$item->lote->strain->name}}
+                                    {{$item->batch->strain->name}}
                                   </div>
 
                                   <div class="text-mute">
-                                      <span class="mr-4">Cosechada: {{$item->lote->strain->lotesActive->harvested_at}}
+                                      <span class="mr-4">Cosechada: {{$item->batch->strain->batchesActive->harvested_at}}
 
                                       </span>
 

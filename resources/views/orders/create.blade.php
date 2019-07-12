@@ -25,25 +25,25 @@
       @endif
 
       <div class="row">
-        @foreach (App\Models\Lote::where('status',1)->get() as $lote)
+        @foreach (App\Models\batch::where('status',1)->get() as $batch)
           <div class="col-sm-12  col-md-6 	col-lg-4 	col-xl-3">
             <div class="card card-air text-center centered mb-4">
               <div class="rel">
-                  <img class="card-img-top" src="{{$lote->img}}" alt="image">
+                  <img class="card-img-top" src="{{$batch->img}}" alt="image">
               </div>
 
               <div class="card-body">
                 <div class="text-primary"><i class="ti-location-pin mr-2"></i>Curicó</div>
-                  <h4 class="card-title mb-1">{{$lote->strain->name}}</h4>
-                  <div class="text-primary">Cosechada: {{$lote->harvested_at}}</div>
+                  <h4 class="card-title mb-1">{{$batch->strain->name}}</h4>
+                  <div class="text-primary">Cosechada: {{$batch->harvested_at}}</div>
 
-                  <div class="text-strong">{{number_format($lote->price,0, ',', '.')}} el g</div>
+                  <div class="text-strong">{{number_format($batch->price,0, ',', '.')}} el g</div>
                   {{-- <p class="mt-4 mb-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --}}
                   <br/>
 
                   <div class="card-footer text-muted">
                     <label>Cantidad</label>
-                    <input class="form-control orderInput" name="{{$lote->code}}" style="heigth:50%" value="0" type="number" data-price="{{$lote->price}}">
+                    <input class="form-control orderInput" name="{{$batch->code}}" style="heigth:50%" value="0" type="number" data-price="{{$batch->price}}">
 
                   </div>
               </div>

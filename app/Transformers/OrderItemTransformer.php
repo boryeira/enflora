@@ -21,8 +21,8 @@ class OrderItemTransformer extends TransformerAbstract
             'quantity' => (string)$order_item->quantity,
             
             'product' => [
-                'name' => (string)$order_item->lote->strain->name,
-                'img' =>  (string)$order_item->lote->img,
+                'name' => (string)$order_item->batch->strain->name,
+                'img' =>  (string)$order_item->batch->img,
             ],
             'rels' => [
 

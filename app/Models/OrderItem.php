@@ -8,9 +8,10 @@ use App\Transformers\OrderItemTransformer;
 class OrderItem extends Model
 {
   public $transformer = OrderItemTransformer::class;
-  public function lote()
+  
+  public function batch()
   {
-      return $this->belongsTo('App\Models\Lote');
+      return $this->belongsTo('App\Models\Batch');
   }
   public function order()
   {

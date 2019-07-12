@@ -3,7 +3,7 @@
 namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
-use App\Models\Lote as Batch;
+use App\Models\Batch;
 
 class BatchTransformer extends TransformerAbstract
 {

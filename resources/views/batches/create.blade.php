@@ -6,30 +6,29 @@
 
   <div class="ibox ibox-fullheight">
         <div class="ibox-head">
-            <div class="ibox-title">Ingreso de lote</div>
+            <div class="ibox-title">Ingreso de batch</div>
         </div>
-        <form class="form-info" action="{{route('lotes.update',['lote'=>$lote->id])}}" method="POST" enctype="multipart/form-data">
+        <form class="form-info" action="{{route('batches.store')}}" method="POST" enctype="multipart/form-data">
            <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-           <input name="_method" type="hidden" value="PUT">
             <div class="ibox-body">
                 <div class="row">
                     <div class="col-sm-6 form-group mb-6">
                         <label>Fecha cosecha</label>
-                        <input class="form-control" type="date"  name="harvest" value="{{$lote->harvested_at}}">
+                        <input class="form-control" type="date"  name="harvest">
                     </div>
                     <div class="col-sm-6 form-group mb-6">
                         <label>Fecha enfrascado</label>
-                        <input class="form-control" type="date"  name="storage" value="{{$lote->storage_at}}">
+                        <input class="form-control" type="date"  name="storage">
                     </div>
                     <div class="col-sm-6 form-group mb-6">
                         <label>Codigo</label>
-                        <input class="form-control" type="text" placeholder="00" name="code" value="{{$lote->code}}">
+                        <input class="form-control" type="text" placeholder="00" name="code">
                     </div>
                     <div class="col-sm-6 form-group mb-6">
                       <label>Variedad</label>
                       <select class="form-control" name="strain">
                         @foreach (App\Models\Strain::all() as $strain)
-                          <option value="{{$strain->id}}" @if($strain->id ==$lote->strain_id ) selected @endif >{{$strain->name}}</option>
+                          <option value="{{$strain->id}}">{{$strain->name}}</option>
                         @endforeach
 
 
@@ -37,19 +36,18 @@
                     </div>
                     <div class="col-sm-6 form-group mb-6">
                       <label>Cantidad en gramos</label>
-                      <input class="form-control" type="number" placeholder="en gramos" name="quantity" value="{{$lote->quantity}}">
+                      <input class="form-control" type="number" placeholder="en gramos" name="quantity">
                     </div>
                     <div class="col-sm-6 form-group mb-6">
                       <label>Valor por gramos</label>
-                      <input class="form-control" type="number" placeholder="en gramos" name="price" value="{{$lote->price}}">
+                      <input class="form-control" type="number" placeholder="en gramos" name="price">
                     </div>
                     <div class="col-sm-12 form-group mb-12">
                       <label>Descripcion</label>
-                      <textarea class="form-control" name="details">{{$lote->details}}</textarea>
+                      <textarea class="form-control" name="details"></textarea>
                     </div>
                     <div class="col-sm-6 form-group mb-6">
                       <label>Imagen:</label>
-                      <img src="{{$lote->img}}" width="100px">
                       <input type="file" name="img"   >
                     </div>
 
@@ -68,7 +66,7 @@
                 </div> --}}
             </div>
             <div class="ibox-footer">
-                <button class="btn btn-info mr-2" type="submit">Editar</button>
+                <button class="btn btn-info mr-2" type="submit">Agregar</button>
                 <button class="btn btn-secondary" type="reset">Cancelar</button>
             </div>
         </form>

@@ -7,13 +7,13 @@
         </li>
         <li >
               <a href="javascript:;" aria-expanded="false"><i class="sidebar-item-icon ti-layout-grid3"></i>
-                  <span class="nav-label">Lotes</span><i class="fa fa-angle-left arrow"></i></a>
+                  <span class="nav-label">batches</span><i class="fa fa-angle-left arrow"></i></a>
               <ul class="nav-2-level collapse" aria-expanded="false" style="height: 0px;">
                   <li>
-                      <a href="{{route('lotes.index')}}">Todos</a>
+                      <a href="{{route('batches.index')}}">Todos</a>
                   </li>
                   <li>
-                      <a href="{{route('lotes.create')}}">Agregar</a>
+                      <a href="{{route('batches.create')}}">Agregar</a>
                   </li>
 
               </ul>
@@ -23,10 +23,10 @@
                     <span class="nav-label">Variedades</span><i class="fa fa-angle-left arrow"></i></a>
                 <ul  class="nav-2-level collapse" aria-expanded="false" style="height: 0px;">
                     <li>
-                        <a href="{{route('lotes.index')}}">Todas</a>
+                        <a href="{{route('batches.index')}}">Todas</a>
                     </li>
                     {{-- <li>
-                        <a href="{{route('lotes.create')}}">Agregar</a>
+                        <a href="{{route('batches.create')}}">Agregar</a>
                     </li>
 
                 </ul>

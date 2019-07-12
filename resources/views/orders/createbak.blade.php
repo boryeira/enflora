@@ -43,9 +43,9 @@
 
                         <div class="col-sm-6 form-group mb-6">
                           <label>Variedad</label>
-                          <select class="form-control" name="lote_id">
-                            @foreach (App\Models\Lote::where('status',1)->get() as $lote)
-                              <option value="{{$lote->id}}">{{$lote->strain->name}}</option>
+                          <select class="form-control" name="batch_id">
+                            @foreach (App\Models\batch::where('status',1)->get() as $batch)
+                              <option value="{{$batch->id}}">{{$batch->strain->name}}</option>
                             @endforeach
                           </select>
                         </div>

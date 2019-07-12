@@ -17,7 +17,7 @@ Route::post('/passwordupdate', 'Users\UserController@passwordUpdate')->name('use
 
 Auth::routes();
 
-Route::resource('/lotes', 'LoteController');
+Route::resource('/batches', 'BatchController');
 Route::resource('/users', 'Users\UserController');
 Route::resource('/orders', 'OrderController');
 Route::get('/orders/{order}/status', 'OrderController@status')->name('orders.status');

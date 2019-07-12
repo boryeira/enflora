@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Transformers\BatchTransformer;
 
-class Lote extends Model
+class Batch extends Model
 {
   public $transformer = BatchTransformer::class;
   
