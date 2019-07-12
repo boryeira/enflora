@@ -6,7 +6,7 @@
 
   <div class="ibox ibox-fullheight">
         <div class="ibox-head">
-            <div class="ibox-title">Ingreso de batch</div>
+            <div class="ibox-title">Ingreso de Lote</div>
         </div>
         <form class="form-info" action="{{route('batches.store')}}" method="POST" enctype="multipart/form-data">
            <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />

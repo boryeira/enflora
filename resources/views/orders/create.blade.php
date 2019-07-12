@@ -25,7 +25,7 @@
       @endif
 
       <div class="row">
-        @foreach (App\Models\batch::where('status',1)->get() as $batch)
+        @foreach (App\Models\Batch::where('status',1)->get() as $batch)
           <div class="col-sm-12  col-md-6 	col-lg-4 	col-xl-3">
             <div class="card card-air text-center centered mb-4">
               <div class="rel">
@@ -36,7 +36,7 @@
                 <div class="text-primary"><i class="ti-location-pin mr-2"></i>Curicó</div>
                   <h4 class="card-title mb-1">{{$batch->strain->name}}</h4>
                   <div class="text-primary">Cosechada: {{$batch->harvested_at}}</div>
-
+                  {{-- <div class="text-strong">{{number_format($batch->price,0, ',', '.')}} el g</div> --}}
                   <div class="text-strong">{{number_format($batch->price,0, ',', '.')}} el g</div>
                   {{-- <p class="mt-4 mb-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --}}
                   <br/>

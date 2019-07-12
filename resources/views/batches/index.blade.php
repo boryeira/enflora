@@ -47,7 +47,7 @@
       <div class="col-xl-12">
         <div class="ibox">
             <div class="ibox-head">
-                <div class="ibox-title">batches activos</div>
+                <div class="ibox-title">Lotes activos</div>
                 <div class="ibox-tool"><a class="btn btn-primary" href="{{route('batches.create')}}">Nuevo batch</a></div>
             </div>
             <div class="ibox-body">

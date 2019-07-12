@@ -6,7 +6,7 @@
     <div class="col-xl-3">
         <div class="ibox ibox-fullheight">
             <div class="ibox-head">
-                <div class="ibox-title">batch # {{$batch->id}}    </div>
+                <div class="ibox-title">lote # {{$batch->id}}    </div>
                 <div class="tools"><a class="btn btn-info" href="{{route('batches.edit',['batch'=>$batch->id])}}">Editar</a></div>
             </div>
             <div class="ibox-body">
@@ -63,7 +63,7 @@
     <div class="col-xl-9">
         <div class="ibox ibox-fullheight">
             <div class="ibox-head">
-                <div class="ibox-title">batch # {{$batch->id}} </div>
+                <div class="ibox-title">lote # {{$batch->id}} </div>
             </div>
             <div class="ibox-body">
                 <div class="table-responsive row">
