@@ -46,9 +46,7 @@
                                   </div>
 
                                   <div class="text-mute">
-                                      <span class="mr-4">Cosechada: {{$item->batch->strain->batchesActive->harvested_at}}
 
-                                      </span>
 
                                   </div>
                                   <div class="text-mute">
