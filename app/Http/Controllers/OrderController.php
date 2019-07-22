@@ -80,15 +80,17 @@ class OrderController extends Controller
 
       $items = $request->all();
       unset($items['_token']);
-      if((array_sum($items)>30)||(array_sum($items)<5) ) {
-        return Redirect::back()->withErrors(array('quantity' => 'La orden debe ser mayor o igual a 5g y menor a 30g.'));
-      }
+
+ 
       if(Auth::user()->role_id==1)
       {
         $user = User::find($request->user);
         unset($items['user']);
       } else {
         $user = Auth::user();
+        if((array_sum($items)>30)||(array_sum($items)<5) ) {
+          return Redirect::back()->withErrors(array('quantity' => 'La orden debe ser mayor o igual a 5g y menor a 30g.'));
+        }
       }
 
       $order = new Order;
