@@ -37,7 +37,7 @@
                   <h4 class="card-title mb-1">{{$batch->strain->name}}</h4>
                   <div class="text-primary">Cosechada: {{$batch->harvested_at}}</div>
                   {{-- <div class="text-strong">{{number_format($batch->price,0, ',', '.')}} el g</div> --}}
-                  <div class="text-strong">{{number_format($batch->price,0, ',', '.')}} el g</div>
+                  <div class="text-strong">{{number_format($batch->price,0, ',', '.')}} el @if($batch->extract == 1) cartucho @else g @endif</div>
                   {{-- <p class="mt-4 mb-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --}}
                   <br/>
 
