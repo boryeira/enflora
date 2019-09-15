@@ -79,8 +79,8 @@ class OrderController extends Controller
     {
 
       $items = $request->all();
-      unset($items['_token']);
-      if(((array_sum($items)>30)||(array_sum($items)<0)) &&  ) {
+      unset($items['_token'])
+      if(((array_sum($items)>30)||(array_sum($items)<0))) {
         return Redirect::back()->withErrors(array('quantity' => 'La orden debe ser igual o menor a 30g.'));
       }
       if(Auth::user()->role_id==1)
