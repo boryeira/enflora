@@ -35,7 +35,11 @@
               <div class="card-body">
                 <div class="text-primary"><i class="ti-location-pin mr-2"></i>Curicó</div>
                   <h4 class="card-title mb-1">{{$batch->strain->name}}</h4>
+                  @if($batch->extract == 1)
+                  <div class="text-primary">Extracto de 0,5 ml</div>
+                  @else
                   <div class="text-primary">Cosechada: {{$batch->harvested_at}}</div>
+                  @endif
                   {{-- <div class="text-strong">{{number_format($batch->price,0, ',', '.')}} el g</div> --}}
                   <div class="text-strong">{{number_format($batch->price,0, ',', '.')}} el @if($batch->extract == 1) cartucho @else g @endif</div>
                   {{-- <p class="mt-4 mb-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --}}
