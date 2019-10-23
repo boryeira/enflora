@@ -34,18 +34,11 @@ class OrderController extends Controller
      */
     public function index()
     {
-      if(Auth::user()->role_id == 1) {
-        $orders =  Order::orderBy('created_at', 'desc')->get();
-        $oldOrders =  Order::where('status',4)->get();
-        $activeOrder = Order::where('status','!=',4)->get();
 
-        return view('orders.index')->with('oldOrders',$oldOrders)->with('activeOrder',$activeOrder);
-      } else {
         $oldOrders =  Auth::user()->oldOrders;
         $activeOrder = Auth::user()->activeOrder;
-
         return view('orders.my')->with('oldOrders',$oldOrders)->with('activeOrder',$activeOrder);
-      }
+
     }
 
     // public function myOrders()

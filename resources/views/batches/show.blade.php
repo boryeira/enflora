@@ -79,7 +79,12 @@
                           @foreach($batch->orderItems as $orderItem)
                             <tr>
                                 <td>
-                                  <a href="javascript:;">{{$orderItem->order->user->full_name}}</a>
+                                    @if($orderItem->order->user)
+                                    <a href="javascript:;">{{$orderItem->order->user->full_name}}</a>
+                                    @else 
+                                    -- usuario eliminado --
+                                    @endif
+                                
                                 </td>
                                 <td>
                                   {{$orderItem->quantity}}g

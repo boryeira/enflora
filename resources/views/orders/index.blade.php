@@ -29,7 +29,11 @@
                                   <a href="javascript:;">#{{$order->id}}</a>
                                 </td>
                                 <td>
+                                  @if($order->user)
                                   <a href="javascript:;">{{$order->user->full_name}}</a>
+                                  @else 
+                                  -- usuario eliminado --
+                                  @endif
                                 </td>
                                 <td>
                                   {{$order->quantity}}g
@@ -162,7 +166,11 @@
                                    <a href="javascript:;">#{{$order->id}}</a>
                                  </td>
                                  <td>
-                                   <a href="javascript:;">{{$order->user->full_name}}</a>
+                                    @if($order->user)
+                                    <a href="javascript:;">{{$order->user->full_name}}</a>
+                                    @else 
+                                    -- usuario eliminado --
+                                    @endif
                                  </td>
                                  <td>
                                    {{$order->quantity}}g
