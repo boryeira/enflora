@@ -5,13 +5,13 @@
   <div class="page-content">
     <div class="row">
       <div class="col-xl-12">
-        <div class="alert alert-info">
+        {{-- <div class="alert alert-info">
             <h4>CyberWeed!  del 12 al 21 de Julio</h4>
             <p>Mientras esperamos las nuevas variedades del club, estarán en descuento nuestras cepas REMO CHEMO y 2046, para todos nuestros miembros.</p> 
             
             <p>Disfruten su medicina.</p>
 
-        </div>
+        </div> --}}
         <div class="ibox ">
           <div class="ibox-head">
               <div class="ibox-title">Orden activa</div>

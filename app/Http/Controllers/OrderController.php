@@ -73,8 +73,9 @@ class OrderController extends Controller
 
       $items = $request->all();
       unset($items['_token']);
-
- 
+      if((array_sum($items)>30)||(array_sum($items)<=0)) {
+        return Redirect::back()->withErrors(array('quantity' => 'La orden debe ser igual o menor a 30g.'));
+      }
       if(Auth::user()->role_id==1)
       {
         $user = User::find($request->user);
@@ -105,7 +106,7 @@ class OrderController extends Controller
           $item->save();
           $batch->consumed = $batch->consumed + $q;
           $diference = $batch->quantity - $batch->consumed;
-          if($diference<=10)
+          if(($diference<=10) && ($batch->extract!=1))
           {
             $batch->status = 2;
           }
