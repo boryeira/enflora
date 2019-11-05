@@ -8,14 +8,14 @@
           <a href="/"><img src="{{asset('img/enflora.png')}}" width="450" style="margin-bottom:50px;margin-top:50px;"/></a>
           <p class="text-light">Club privado de cannabis medicinal</p>
 
-          <div class="card" style="margin:5px">
+          {{-- <div class="card" style="margin:5px">
             <a class="btn btn-primary" href="{{route('login')}}">Ingresar</a>
             <br>
             <a class="btn btn-info" href="https://docs.google.com/forms/d/e/1FAIpQLSfYw_F-vQ2W7Kc4yviJOS2nuR0cfmEgNGv3HMN8r_6Hp_JXyw/viewform?embedded=true">Formulario Pre-registro</a>
 
-          </div>
+          </div> --}}
 
-          <div class="ibox" style="margin:5px">
+          {{-- <div class="ibox" style="margin:5px">
               <div class="ibox-body">
                   <ul class="timeline text-left">
                       <li class="timeline-item"><i class="ti-desktop timeline-icon"></i>Plataforma de suscripción y reserva</li>
@@ -50,8 +50,8 @@
               </div>
             </div>
 
-          </div>
-          <div class="font-13" style="margin-bottom:50px;margin-top:50px;">2018 © Germinada por <b>Envolabs</b> - Cosechando datos</div>
+          </div> --}}
+          <div class="font-13" style="margin-bottom:50px;margin-top:50px;">2018 © Germinada por <b>enfloraLab</b></div>
         </div>
     </div>
 </div>
